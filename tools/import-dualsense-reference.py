@@ -57,12 +57,22 @@ provenance={'repository':'https://github.com/Hammy18/dualsense_overlay','commit'
     'upstream':'https://github.com/philipbry/dualsense_overlay','imageHost':'https://philipbry.github.io/',
     'permission':'User confirmed commercial customization and redistribution permission on 2026-11-14; upstream has no public license file.',
     'originalSHA256':hashlib.sha256((SOURCE/'ZDjUbh0.png').read_bytes()).hexdigest()}
-record={'name':'Dark · shaded artwork','width':794,'height':639,'cover':png(cover),'modelLayers':layers,'modelGeometry':geometry,'source':provenance}
-(ROOT/'app/controller-data'/f'{MODEL}.js').write_text('// Shaded DualSense artwork. User-confirmed reuse permission; attribution in app/licenses/dualsense-artwork.txt.\nCONTROLLER_PACKS['+json.dumps(MODEL)+']='+json.dumps({'Dark':record},separators=(',',':'))+';\n')
+core={'tag':'path','attrs':{'d':'M238 98Q397 85 556 98L558 258C585 282 594 315 588 350 584 392 570 430 536 439H258C224 430 210 392 206 350 200 315 209 282 236 258Z'},'matrix':[1,0,0,1,0,0],'preserveColor':True,'restoreSourceOnly':True}
+labels={'A':'Cross / bottom face','B':'Circle / right face','X':'Square / left face','Y':'Triangle / top face','Share':'Create','Options':'Options','Home':'PS / Home','Touchpad':'Touchpad click (if exposed)','M':'Microphone mute (preview only)'}
+def palette(shell,buttons,accent,rest):return {'baseColor':shell,'buttonBaseColor':buttons,'accent':accent,'pressed':accent,'buttonColors':{key:{'rest':color} for key,color in rest.items()}}
+finishes=[('Dark','Original dark / rose',palette('#ffffff','#ffffff','#df4ba8',{})),
+ ('Pearl','Pearl / charcoal',palette('#f3f0e8','#30343e','#de76ad',{'Touchpad':'#252b33','LT':'#454954','RT':'#454954','LB':'#454954','RB':'#454954','Home':'#a0a7b2','M':'#b75e89','A':'#3d607e','B':'#a34e61','X':'#855b86','Y':'#447969'})),
+ ('Crimson','Crimson / graphite',palette('#b83b51','#282c34','#ec879e',{'Touchpad':'#1e242c','LT':'#4a4e58','RT':'#4a4e58','LB':'#4a4e58','RB':'#4a4e58','Home':'#aab0b9','M':'#cc7b94','A':'#b2677c','B':'#484d58','X':'#484d58','Y':'#484d58'}))]
+pack={};variants=[]
+for variant,title,colors in finishes:
+    shape={**geometry,'protectedShapes':[] if variant=='Dark' else [core]}
+    pack[variant]={'name':title,'width':794,'height':639,'cover':png(cover),'modelLayers':layers,'modelGeometry':shape,'source':provenance}
+    item={'id':variant,'name':title,'thumbnail':f'controller-thumbnails/{MODEL}/{variant}.png','controls':sorted({c['key'] for c in controls}|{'LSB','RSB'}),'labels':labels}
+    if colors:item['palette']=colors
+    variants.append(item)
+(ROOT/'app/controller-data'/f'{MODEL}.js').write_text('// Shaded DualSense artwork. User-confirmed reuse permission; attribution in app/licenses/dualsense-artwork.txt.\nCONTROLLER_PACKS['+json.dumps(MODEL)+']='+json.dumps(pack,separators=(',',':'))+';\n')
 file=ROOT/'app/controller-catalog.js';catalog=json.loads(file.read_text().split('const CONTROLLER_CATALOG=')[1].strip().rstrip(';'));catalog=[m for m in catalog if m['id']!=MODEL]
-catalog.append({'id':MODEL,'name':'DualSense · Shaded','collection':'Rendered controllers','defaultVariant':'Dark','variants':[{'id':'Dark','name':'Dark · shaded artwork',
-    'thumbnail':f'controller-thumbnails/{MODEL}/Dark.png','controls':sorted({c['key'] for c in controls}|{'LSB','RSB'}),
-    'labels':{'A':'Cross / bottom face','B':'Circle / right face','X':'Square / left face','Y':'Triangle / top face','Share':'Create','Options':'Options','Home':'PS / Home','Touchpad':'Touchpad click (if exposed)','M':'Microphone mute (preview only)'}}]})
+catalog.append({'id':MODEL,'name':'DualSense · Shaded','collection':'Rendered controllers','defaultVariant':'Dark','variants':variants})
 file.write_text('// Visual templates are independent of the connected input device.\nconst CONTROLLER_CATALOG='+json.dumps(catalog,separators=(',',':'))+';\n')
 (ROOT/'docs/dualsense-sprite-audit.json').write_text(json.dumps({'source':provenance,'controls':measured,'sticks':sticks,'nativeSize':[794,639],'travelNote':'12 source pixels; explicit visual limit, not a device calibration or a value supplied by the CSS.'},indent=2)+'\n')
-print('Prepared DualSense template: 17 source-aligned controls, 2 separate caps and stationary wells. Reuse permission confirmed by the user.')
+print('Prepared 3 DualSense finishes; refresh matching thumbnails with tools/capture-dualsense-palettes.cjs. Template: 17 source-aligned controls, 2 separate caps and stationary wells. Reuse permission confirmed by the user.')

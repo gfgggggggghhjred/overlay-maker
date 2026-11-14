@@ -49,7 +49,7 @@ function buildModelGeometry(record,image,layerImages={}){
   sticks.push([x,y,key,index?'RSB':'LSB',index*2,r,rim,...(Number.isFinite(item.travel)?[item.travel*scale]:[])]);rimCircles.push([x,y,rim]);
  }
  const staticMask=canvas(W,H),colorProtection=canvas(W,H),sc=staticMask.getContext('2d'),cc=colorProtection.getContext('2d');sc.fillStyle=cc.fillStyle='#ffffff';
- for(const shape of spec.protectedShapes||[]){const p=new Path2D();p.addPath(pathFor(shape),matrix.multiply(new DOMMatrix(shape.matrix)));sc.fill(p,shape.fillRule||'nonzero');if(shape.preserveColor)cc.fill(p,shape.fillRule||'nonzero');}
+ for(const shape of spec.protectedShapes||[]){const p=new Path2D();p.addPath(pathFor(shape),matrix.multiply(new DOMMatrix(shape.matrix)));if(!shape.restoreSourceOnly)sc.fill(p,shape.fillRule||'nonzero');if(shape.preserveColor)cc.fill(p,shape.fillRule||'nonzero');}
  let fixedArtwork=null;if((spec.protectedShapes||[]).some(s=>s.preserveColor)){fixedArtwork=canvas(W,H);const fc=fixedArtwork.getContext('2d');fc.drawImage(base,0,0);fc.globalCompositeOperation='destination-in';fc.drawImage(colorProtection,0,0);fc.globalCompositeOperation='source-over';}
  return{materialRange:spec.materialRange,layered:!!spec.layered,floatArtwork:!!spec.floatArtwork,faces,faceKeys:Object.keys(faces),stickLayout:sticks,images,rimCircles,staticMask,colorProtection,fixedArtwork,scale};
 }

@@ -1,6 +1,6 @@
 # DualSense shaded template — 0.18
 
-Added **DualSense · Shaded / Dark** as an independent starting template. The gallery now has 28 visual families / 71 skins. Existing templates retain their identity, and retired Xelu models remain removed. The visual template can be driven by any browser-standard gamepad; selecting it does not change input-device selection or remap existing controls.
+Added **DualSense · Shaded** with Original Dark/Rose, Pearl/Charcoal and Crimson/Graphite starting finishes. The gallery now has 28 visual families / 73 skins. Existing templates retain their identity, and retired Xelu models remain removed. The visual template can be driven by any browser-standard gamepad; selecting it does not change input-device selection or remap existing controls.
 
 ## Source audit
 
@@ -33,3 +33,9 @@ The original source files, image hashes and dimensions are retained outside the 
 The source raster is 794 × 639, with 54px face buttons and 95px sticks. It reads well at typical OBS sizes; large upscaling does not add real detail. Bright recolors can expose tonal steps already present in the dark 8-bit original. High-resolution layered originals would improve this ceiling. The source has blank face buttons rather than printed PlayStation symbols, which are deliberately retained.
 
 Physical DualSense hardware, Home/touchpad availability on specific drivers, OBS/Streamlabs background input and target-GPU performance still require manual testing. The template does not implement adaptive-trigger force, touch gestures, haptics or a microphone-mute protocol.
+
+## Coordinated finishes
+
+The selectable finishes are **Original dark / rose**, **Pearl / charcoal**, and **Crimson / graphite**. Pearl and Crimson pair colored outer housings with the original dark center, separate dark touchpads/caps, contrasting utility controls and deliberate face-button accents. They apply independent existing palette fields; individual part colors remain editable. Palette objects are copied for each project, so one customer's edits cannot mutate the starting template.
+
+The dark center is restored during base recoloring without blocking shell artwork, textures or theme effects. That keeps the layered finish intact while allowing existing artwork workflows. Matching thumbnails are captured from the shared renderer using `node tools/capture-dualsense-palettes.cjs` after importing; the script expects the app at STUDIO_URL (default localhost:8793).

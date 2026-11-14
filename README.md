@@ -96,4 +96,4 @@ The [Controller Layer Pack](CONTROLLER-LAYER-PACK.md) adds ten additional PlaySt
 
 ## Shaded DualSense template (0.18)
 
-Choose **DualSense · Shaded** in Templates for the new dark rendered controller. It uses the existing customization and standalone customer-delivery workflow. Touchpad click responds when browser button 17 is available; mute is preview-only. Source attribution, native-resolution limits and verification are recorded in [the DualSense audit](docs/dualsense-reference-audit.md).
+Choose **DualSense · Shaded** in Templates for the rendered controller with Original Dark/Rose, Pearl/Charcoal and Crimson/Graphite finishes. It uses the existing customization and standalone customer-delivery workflow. Touchpad click responds when browser button 17 is available; mute is preview-only. Source attribution, native-resolution limits and verification are recorded in [the DualSense audit](docs/dualsense-reference-audit.md).
