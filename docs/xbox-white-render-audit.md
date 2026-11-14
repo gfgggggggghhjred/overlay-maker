@@ -1,6 +1,6 @@
 # Rendered white Xbox — asset integration and QC
 
-Template: **Xbox · Rendered / White & graphite**. The pack does not identify an exact Xbox hardware revision, so the template does not claim a Series/One/Elite revision. Existing controller artwork is retained in its own families. The gallery candidate contains 29 families / 74 skins.
+Template: **Xbox · Rendered / White & graphite**. The pack does not identify an exact Xbox hardware revision, so the template does not claim a Series/One/Elite revision. Existing controller artwork is retained in its own families. The gallery contains 30 families / 76 skins, including the separate Midnight / gold / cyan Xbox starting preset.
 
 ## Supplied resources
 
@@ -14,7 +14,7 @@ Original files remain unchanged in `reference-assets/xbox-white-render`, outside
 
 - Recovered each visible socket opening from the front reference and body layer. Kept the exposed reference rim fixed, reconstructed the hidden area under the cap and removed baked cap pixels. The large unoccluded socket disks in the supplied layered preview no longer cover the housing.
 - Preserved the provided joint pivots, `[531,685]` and `[1277,979]`. They are not the image centers. Cap-fitting radii include every nontransparent cap pixel relative to those pivots; a half-width crop would truncate the lower cap edges.
-- Used the reference HTML's 15-source-pixel travel as the visual range, with the existing radial input limit. This is not a claim of physical hardware calibration.
+- Expanded the initially restricted 15-source-pixel travel to 45 source pixels (about 31 display pixels rather than 10), with the existing radial input limit. Positions use direct subpixel axes: no additional deadzone, frame-dependent interpolation or input delay. This is a visual range, not physical hardware calibration.
 - Preserved the visible bumper/trigger cutouts, excluding later-layer occlusion at mask edges. These components illuminate in place; no hidden shoulder geometry or mechanical travel is invented.
 - Added opt-in analog illumination blending over the original shoulder art, so very small trigger values do not pop abruptly into a different material. Neutral/release returns to original artwork.
 - Preserved source surface shading without turning its specular highlights into noisy contrasting ink. Kept the original ABXY legend colors. The Xbox emblem uses a separate bright-mark mask and background sampling for legibility during activation.
@@ -45,3 +45,11 @@ The version-bump audit found that previous text replacement had also changed Nod
 A standalone **internal** preview is prepared at `release/Xbox-Rendered-Internal-Preview.html`. It embeds the current renderer and assets for operator review. It is not a published customer handoff.
 
 The managed QA browser rejects direct `file://` navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`. That optional file-opening check could not be completed; no bypass was attempted. The embedded customer HTML passed rendering/export checks in the existing browser test context. Local-file opening and real-controller behavior still need verification on the operator’s Windows browser.
+
+## 0.21 response and reference palette
+
+The user reported stiff stick motion. Inspection confirmed live input already runs on requestAnimationFrame without rounding or filtering; the unusually short 15-source-pixel throw was the constraint. The source-aligned cap range is now 45 pixels. Source pivots, full cap alpha, fixed sockets/rims and neutral appearance remain the same. The existing geometry tests cover exposed well pixels at the larger travel. Renderer revision 11 marks older exported deliveries as requiring re-export to acquire this behavior. No other model's geometry is changed.
+
+The independent GoldCyan starting preset uses charcoal #24282e, gold #c9a951 and cyan #2ac9df, with graphite face surfaces, gold D-pad/left cap/Home/triggers and cyan right cap/utility buttons. Source shading and familiar colored face legends remain. Palette button objects are copied per project, so editing a job cannot change the gallery or another job. No source image is recolored destructively.
+
+`xbox-fluidity-test.cjs` verifies 99 proportional motion samples across 30/60/144-frame-per-second timestamp sequences, tiny input values without rounding/deadzone, same-frame neutral release, original artwork, independent palette objects, gallery selection/save/default/Undo, embedded customer range and disconnect-to-neutral. These are synthetic rendering/input checks, not physical-controller certification.

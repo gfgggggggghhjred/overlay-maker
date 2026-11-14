@@ -180,5 +180,10 @@
     "layers/left-stick-cap.png": "d9f621aed1280677f4ad74302fca64277d4641e8a26531cf4162f293ccb0c21f",
     "layers/right-stick-cap.png": "512b8d8b3271bac487ca77eab9704ed1c398ab0d2989d217c64630a3fc56d35b"
   },
+  "visualStickTravel": {
+    "sourcePixels": 45,
+    "previousSourcePixels": 15,
+    "note": "Expanded visual range; direct radial axes with no additional filtering or deadzone. Not hardware calibration."
+  },
   "shoulders": "Visible cutouts; masked illumination only. No hidden geometry or mechanical trigger animation invented."
 }

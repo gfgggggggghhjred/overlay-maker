@@ -1,4 +1,4 @@
-OVERLAY STUDIO — INTERNAL PRODUCTION TOOL — 0.20.0 WINDOWS PRERELEASE
+OVERLAY STUDIO — INTERNAL PRODUCTION TOOL — 0.21.0 WINDOWS PRERELEASE
 
 This application is for the producer. Customers receive a hosted overlay URL.
 
@@ -159,3 +159,9 @@ both sticks/clicks and optional browser touchpad click (button 17).
 Complete bumper, trigger and rear-paddle artwork was not supplied. Those inputs
 are not visualized by this preview template. Finish and physically verify
 these surfaces before offering a complete SCUF customer overlay.
+
+XBOX STICK RESPONSE AND COLOR PRESET
+Templates > Xbox · Rendered > Midnight / gold / cyan selects the coordinated
+charcoal, gold and cyan finish. The original White / graphite remains available.
+Both finishes use fuller stick travel with direct subpixel input response.
+Re-export an existing customer overlay to include the new visual stick range.
