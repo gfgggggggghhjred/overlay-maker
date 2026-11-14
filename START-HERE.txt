@@ -1,4 +1,4 @@
-OVERLAY STUDIO — INTERNAL PRODUCTION TOOL — 0.21.0 WINDOWS PRERELEASE
+OVERLAY STUDIO — INTERNAL PRODUCTION TOOL — 0.22.0 WINDOWS PRERELEASE
 
 This application is for the producer. Customers receive a hosted overlay URL.
 
@@ -165,3 +165,11 @@ Templates > Xbox · Rendered > Midnight / gold / cyan selects the coordinated
 charcoal, gold and cyan finish. The original White / graphite remains available.
 Both finishes use fuller stick travel with direct subpixel input response.
 Re-export an existing customer overlay to include the new visual stick range.
+
+SCUF INSTINCT AND BRANDED PRESETS
+Templates > SCUF Instinct · Front preview has stock orange rings plus
+EQDomain · gold / cyan and SJD · gold / cyan. Turn off Keep current
+customization to apply the preset colors and editable grip wordmark.
+Front inputs and movable caps use the existing standard-gamepad system.
+Share/Capture and mute are preview-only; the indicator is artwork.
+Complete bumpers, triggers and rear controls are not supplied or visualized.

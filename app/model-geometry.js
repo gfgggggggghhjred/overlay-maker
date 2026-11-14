@@ -21,7 +21,7 @@ function buildModelGeometry(record,image,layerImages={}){
  for(const item of spec.controls){
   const delta=item.floating?floatShifts[item.key]||0:0,transform=new DOMMatrix([1,0,0,1,0,delta]).multiply(matrix),path=new Path2D();path.addPath(pathFor(item),transform.multiply(new DOMMatrix(item.matrix)));
   const[x,y,w,h]=item.bounds,[px,baseY]=point(x,y),py=baseY+delta,part={path,rule:item.fillRule||'nonzero',floating:!!item.floating,bounds:[px,py,w*scale,h*scale]};
-  const face=faces[item.key]??={path:new Path2D(),parts:[],symbols:[],modelFace:true,normal:item.normal||'#999999',sourceLabels:!!spec.layered,layeredMaterial:!!item.layeredMaterial,surfaceOnly:!!item.surfaceOnly,inkMode:item.inkMode,preserveColorInk:!!item.preserveColorInk};face.path.addPath(path);face.parts.push(part);
+  const face=faces[item.key]??={path:new Path2D(),parts:[],symbols:[],modelFace:true,normal:item.normal||'#999999',sourceLabels:!!spec.layered,layeredMaterial:!!item.layeredMaterial,surfaceOnly:!!item.surfaceOnly,inkMode:item.inkMode,inkInset:item.inkInset,preserveColorInk:!!item.preserveColorInk};face.path.addPath(path);face.parts.push(part);
  }
  for(const[key,f]of Object.entries(faces)){
   const bounds=parts=>{const x=Math.min(...parts.map(p=>p.bounds[0])),y=Math.min(...parts.map(p=>p.bounds[1])),right=Math.max(...parts.map(p=>p.bounds[0]+p.bounds[2])),bottom=Math.max(...parts.map(p=>p.bounds[1]+p.bounds[3]));return[x,y,right-x,bottom-y];};
@@ -36,7 +36,7 @@ function buildModelGeometry(record,image,layerImages={}){
    for(let i=0;i<pixels.data.length;i+=4){const level=luma(i),a=mask[i+3]*pixels.data[i+3]/255,v=Math.round(255*(spec.materialRange ? .12+.88*Math.pow(Math.max(0,Math.min(1,(level-spec.materialRange[0])/(spec.materialRange[1]-spec.materialRange[0]))),.75) : Math.max(.45,Math.min(1,level/Math.max(16,backdrop)))));shadePixels.data[i]=shadePixels.data[i+1]=shadePixels.data[i+2]=v;shadePixels.data[i+3]=a;const chroma=Math.max(pixels.data[i],pixels.data[i+1],pixels.data[i+2])-Math.min(pixels.data[i],pixels.data[i+1],pixels.data[i+2]);colorPixels.data[i+3]=f.preserveColorInk&&chroma>40?a:0;}
    shade.getContext('2d').putImageData(shadePixels,0,0);colorInk.getContext('2d').putImageData(colorPixels,0,0);f.nativeShade=shade;f.nativeColorInk=colorInk;
   }
-  for(let i=0;i<pixels.data.length;i+=4){const difference=f.inkMode==='bright-mark'?(luma(i)-215)*1.5+24:Math.abs(luma(i)-backdrop),alpha=mask[i+3]&&pixels.data[i+3]?Math.max(0,Math.min(255,(difference-24)*5)):0;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=255;pixels.data[i+3]=alpha;}
+  for(let i=0;i<pixels.data.length;i+=4){const difference=f.inkMode==='bright-mark'?(luma(i)-215)*1.5+24:Math.abs(luma(i)-backdrop),insideInk=!Number.isFinite(f.inkInset)||Math.hypot(((i/4)%width+ix-f.center[0])/(box[2]/2),(Math.floor(i/4/width)+iy-f.center[1])/(box[3]/2))<=f.inkInset,alpha=insideInk&&mask[i+3]&&pixels.data[i+3]?Math.max(0,Math.min(255,(difference-24)*5)):0;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=255;pixels.data[i+3]=alpha;}
   ic.putImageData(pixels,0,0);Object.assign(f,{nativeInk:spec.materialRange||f.surfaceOnly?null:ink,inkTint:canvas(width,height),inkX:ix,inkY:iy,inkColor:''});
  }
  const sticks=[],images={base,modelFloat:floating},rimCircles=[];

@@ -10,7 +10,7 @@ Models load on demand. Only the chosen variant is embedded in customer HTML. Cus
 
 ## Included visual inventory
 
-30 visual families, 76 variants: the established 13 G7 Pro 8K skins, 47 additional supplied GameSir variants, 10 Controller Layer Pack skins, three rendered DualSense finishes, two rendered Xbox finishes and one SCUF Impact front preview. See [layered controller integration](CONTROLLER-LAYER-PACK.md) for those five additional families. Source identifiers are retained where an official marketing name cannot be verified. These are visual templates, not claims that the matching hardware was physically tested.
+31 visual families, 79 variants: the established 13 G7 Pro 8K skins, 47 additional supplied GameSir variants, 10 Controller Layer Pack skins, three rendered DualSense finishes, two rendered Xbox finishes one SCUF Impact front preview and three SCUF Instinct front-preview options. See [layered controller integration](CONTROLLER-LAYER-PACK.md) for those five additional families. Source identifiers are retained where an official marketing name cannot be verified. These are visual templates, not claims that the matching hardware was physically tested.
 
 | Source model ID | Variants | Available artwork |
 | --- | ---: | --- |
@@ -21,6 +21,7 @@ Models load on demand. Only the chosen variant is embedded in customer HTML. Cus
 | Layer Pack Xbox Elite artwork | 2 | Elite 1 and Elite 2 source designs |
 | DualSenseShaded | 3 | Original dark / rose, Pearl / charcoal, Crimson / graphite |
 | XboxWhiteRender | 2 | White / graphite; Midnight / gold / cyan |
+| ScufInstinctRender | 3 | Graphite / orange rings; EQDomain gold/cyan; SJD gold/cyan. Front only, Capture/mute preview-only. |
 | ScufImpactRender | 1 | Pearl front preview; no bumper, trigger or rear-paddle visualization |
 | G7ProCE | 13 | Gold, Aimlabs, GoldenApple, Crown, White, Black, Blue, GradientBlue, G7Pro, XReal, NBA2K, Nioh, YingRen |
 | C2 | 1 | White |

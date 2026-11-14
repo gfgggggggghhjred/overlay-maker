@@ -1,0 +1,10 @@
+SCUF Instinct front-preview artwork
+Source: user-supplied SCUF_Xbox_Orange_Assets.zip, integrated 2026-11-14.
+Native rendered/reconstructed artwork: 1448 x 1086, supplied at 2x export scale.
+Original notices and source files remain in reference-assets/scuf-instinct.
+No new public artwork license or dimensionally certified geometry is asserted.
+This front preview lacks complete shoulder/trigger/rear-control artwork.
+Share/Capture and mute are preview-only; the indicator is static source art.
+EQDomain and SJD text/palettes were requested by the project owner.
+SCUF and Xbox names/marks remain the property of their respective owners.
+See docs/scuf-instinct-audit.md for source, input and geometry limitations.

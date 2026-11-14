@@ -145,7 +145,7 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
   tinted.base=tint(images.base,color,1672,941,modelGeometry?.materialRange||!!modelGeometry?.layered);
   const controls=tint(images.base,buttonColor,1672,941,modelGeometry?.materialRange||!!modelGeometry?.layered),g=controls.getContext('2d');
   g.globalCompositeOperation='destination-in';g.drawImage(controlMask,0,0);
-  const body=tinted.base.getContext('2d');body.globalCompositeOperation='destination-out';body.drawImage(controlMask,0,0);body.globalCompositeOperation='lighter';body.drawImage(controls,0,0);body.globalCompositeOperation='source-over';if(modelGeometry?.fixedArtwork)body.drawImage(modelGeometry.fixedArtwork,0,0);controls.width=0;
+  const body=tinted.base.getContext('2d');body.globalCompositeOperation='destination-out';body.drawImage(controlMask,0,0);body.globalCompositeOperation='lighter';body.drawImage(controls,0,0);body.globalCompositeOperation='source-over';if(modelGeometry?.fixedArtwork){body.globalCompositeOperation='destination-out';body.drawImage(modelGeometry.colorProtection,0,0);body.globalCompositeOperation='lighter';body.drawImage(modelGeometry.fixedArtwork,0,0);body.globalCompositeOperation='source-over';}controls.width=0;
  }
  function cap(key, color) {
   const id = key + color;

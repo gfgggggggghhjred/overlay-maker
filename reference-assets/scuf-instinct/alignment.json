@@ -1,0 +1,246 @@
+{
+  "canvas": {
+    "width": 2896,
+    "height": 2172
+  },
+  "nativeRender": {
+    "width": 1448,
+    "height": 1086
+  },
+  "exportScale": 2,
+  "origin": "top-left",
+  "units": "pixels",
+  "layerOrder": [
+    "body",
+    "stick_left_socket",
+    "stick_right_socket",
+    "dpad_socket",
+    "shoulder_left_visible",
+    "shoulder_right_visible",
+    "dpad_disc",
+    "button_Y",
+    "button_B",
+    "button_A",
+    "button_X",
+    "button_view",
+    "button_menu",
+    "button_share",
+    "button_home",
+    "button_mute",
+    "indicator_green",
+    "stick_left_cap",
+    "stick_right_cap"
+  ],
+  "layers": [
+    {
+      "id": "body",
+      "file": "layers/body.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1672,
+        940
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "stick_left_socket",
+      "file": "layers/stick_left_socket.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        798,
+        752
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "stick_right_socket",
+      "file": "layers/stick_right_socket.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1778,
+        1126
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "dpad_socket",
+      "file": "layers/dpad_socket.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1112,
+        1164
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "shoulder_left_visible",
+      "file": "layers/shoulder_left_visible.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        814,
+        350
+      ],
+      "status": "Visible portion only; full LB/RB/LT/RT geometry unverified"
+    },
+    {
+      "id": "shoulder_right_visible",
+      "file": "layers/shoulder_right_visible.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2076,
+        352
+      ],
+      "status": "Visible portion only; full LB/RB/LT/RT geometry unverified"
+    },
+    {
+      "id": "dpad_disc",
+      "file": "layers/dpad_disc.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1112,
+        1164
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_Y",
+      "file": "layers/button_Y.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2088,
+        592
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_B",
+      "file": "layers/button_B.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2258,
+        766
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_A",
+      "file": "layers/button_A.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2092,
+        932
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_X",
+      "file": "layers/button_X.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1922,
+        758
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_view",
+      "file": "layers/button_view.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1262,
+        748
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_menu",
+      "file": "layers/button_menu.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1626,
+        750
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_share",
+      "file": "layers/button_share.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1444,
+        888
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_home",
+      "file": "layers/button_home.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1446,
+        510
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "button_mute",
+      "file": "layers/button_mute.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1446,
+        1346
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "indicator_green",
+      "file": "layers/indicator_green.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1446,
+        1430
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "stick_left_cap",
+      "file": "layers/stick_left_cap.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        798,
+        752
+      ],
+      "status": "Rendered/reconstructed artwork"
+    },
+    {
+      "id": "stick_right_cap",
+      "file": "layers/stick_right_cap.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1778,
+        1126
+      ],
+      "status": "Rendered/reconstructed artwork"
+    }
+  ],
+  "physicalInputVerified": false
+}
