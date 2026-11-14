@@ -48,7 +48,7 @@ Included fonts: Rajdhani, Orbitron, Oxanium, Teko, Bebas Neue, Barlow Condensed,
 
 ## Visual models
 
-Templates now separates the visual model from the connected gamepad. Choose from 27 source-backed visual families and 70 skins; any browser-standard gamepad can drive any layout. Saved jobs retain their model. See [controller models, audit and limitations](CONTROLLER-MODELS.md).
+Templates now separates the visual model from the connected gamepad. Choose from 29 source-backed visual families and 74 skins; any browser-standard gamepad can drive any layout. Saved jobs retain their model. See [controller models, audit and limitations](CONTROLLER-MODELS.md).
 
 ## Produce and deliver customer overlays
 
@@ -98,6 +98,6 @@ The [Controller Layer Pack](CONTROLLER-LAYER-PACK.md) adds ten additional PlaySt
 
 Choose **DualSense · Shaded** in Templates for the rendered controller with Original Dark/Rose, Pearl/Charcoal and Crimson/Graphite finishes. It uses the existing customization and standalone customer-delivery workflow. Touchpad click responds when browser button 17 is available; mute is preview-only. Source attribution, native-resolution limits and verification are recorded in [the DualSense audit](docs/dualsense-reference-audit.md).
 
-## Rendered Xbox template (0.19 candidate)
+## Rendered Xbox template (0.19)
 
-**Xbox · Rendered / White & graphite** uses the supplied 2048px front-reference art with original colored face legends, corrected fixed wells, complete moving caps and attached shoulder illumination. The source-generation and QC findings are recorded in [the Xbox audit](docs/xbox-white-render-audit.md). Commercial reuse confirmation is pending before publication.
+**Xbox · Rendered / White & graphite** uses the supplied 2048px front-reference art with original colored face legends, corrected fixed wells, complete moving caps and attached shoulder illumination. The source-generation and QC findings are recorded in [the Xbox audit](docs/xbox-white-render-audit.md). The owner confirmed commercial reuse permission; the record is included with the artwork notice.

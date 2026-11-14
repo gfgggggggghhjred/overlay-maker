@@ -1,10 +1,11 @@
-RENDERED XBOX ARTWORK — SOURCE AND PENDING PERMISSION
+RENDERED XBOX ARTWORK — SOURCE AND PERMISSION RECORD
 
 Source: user-supplied White_Xbox_Controller_Assets.zip.
 Native reference/layer canvas: 2048 x 1664 pixels.
-No artist identity, public license or reuse grant was supplied in this pack.
-Its README explicitly requests rights-holder confirmation before customer use.
-Commercial modification and redistribution permission is pending confirmation.
+
+The application owner confirmed commercial customization and redistribution
+rights for this Xbox artwork on 2026-11-14. This records that confirmation;
+it does not create or assert a new public license from the original artist.
 
 Original files and hashes are retained in reference-assets/xbox-white-render
 in the development repository. The app uses measured PNGs and its shared

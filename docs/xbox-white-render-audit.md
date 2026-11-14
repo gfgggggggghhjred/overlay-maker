@@ -1,6 +1,6 @@
 # Rendered white Xbox — asset integration and QC
 
-Local candidate: **Xbox · Rendered / White & graphite**. The pack does not identify an exact Xbox hardware revision, so the template does not claim a Series/One/Elite revision. Existing controller artwork is retained in its own families. The gallery candidate contains 29 families / 74 skins.
+Template: **Xbox · Rendered / White & graphite**. The pack does not identify an exact Xbox hardware revision, so the template does not claim a Series/One/Elite revision. Existing controller artwork is retained in its own families. The gallery candidate contains 29 families / 74 skins.
 
 ## Supplied resources
 
@@ -28,13 +28,13 @@ Original files remain unchanged in `reference-assets/xbox-white-render`, outside
 
 The neutral output has **zero significant changed pixels outside reconstructed cap footprints** compared with the fitted front-reference image. This is measured with an 8-level channel tolerance. Cap surfaces can differ slightly from the full render because the supplied isolated cap render has slightly different lighting.
 
-The existing DualSense and Controller Layer Pack suites pass after the shared renderer changes. The complete local regression run passed **35/35 suites**; the syntax check passed **124 JavaScript files**. Windows packaging/target verification still follows reuse confirmation. Test controllers are simulated; these tests do not count as physical-controller verification in the production workflow.
+The existing DualSense and Controller Layer Pack suites pass after the shared renderer changes. The complete local regression run passed **35/35 suites**; the syntax check passed **124 JavaScript files**. Windows packaging and target verification are release checks. Test controllers are simulated; these tests do not count as physical-controller verification in the production workflow.
 
 [Neutral and simultaneous-input preview](xbox-white-render-review.jpg)
 
 ## Remaining checks and rights
 
-The archive README explicitly says it includes no license or reuse grant. Commercial modification/redistribution confirmation for this Xbox pack is pending; the earlier DualSense confirmation does not establish rights to this separate artwork. Publication is on hold pending that factual confirmation.
+The owner confirmed commercial customization and redistribution rights for this Xbox pack on 2026-11-14. The original archive README remains unchanged as source provenance; it is not used as an instruction to the application. The shipped notice records the owner’s confirmation without asserting a new public license.
 
 A real-controller recording was not supplied. Home availability, full travel, pressure values, driver mapping and OBS/Streamlabs background input need target-machine acceptance testing. Shoulder cutouts cannot support accurate hidden-surface or mechanical animations without additional source artwork/geometry.
 

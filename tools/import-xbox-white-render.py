@@ -1,6 +1,6 @@
 """Prepare the supplied rendered Xbox layers without running their HTML.
 Use the front reference for physical boundaries. Input remains browser-standard.
-Commercial reuse permission for this pack is pending confirmation from the owner.
+The owner confirmed commercial customization/redistribution permission on 2026-11-14.
 """
 from pathlib import Path
 import base64,hashlib,io,json
@@ -60,7 +60,7 @@ for side in ['left','right']:
  sticks.append({'center':[px,py],'rimSamples':samples,'revealSamples':reveal_samples,'capRadius':radius,'rimRadius':rim,'travel':15,'capImage':key,'wellImage':well_key,'layerBounds':[x,y,right-x,bottom-y]})
  well_notes.append({'side':side,'pivot':[px,py],'capRadius':radius,'visibleRimRadius':rim,'openingBounds':[int(ox.min()+sx),int(oy.min()+sy),int(ox.max()+sx+1),int(oy.max()+sy+1)],'removedCapPixels':int(remove.sum())})
 record={'name':'White / graphite','width':W,'height':H,'cover':url(front),'modelLayers':layers,'modelGeometry':{'sourceWidth':W,'sourceHeight':H,'bodyBounds':[42,269,1965,1323],'controls':controls,'sticks':sticks,'protectedShapes':[],'floatArtwork':True,'layered':True,'analogOverlay':True,'spatialRemap':'canonical-positions'},
- 'source':{'pack':'White_Xbox_Controller_Assets.zip','frontReferenceSHA256':hashlib.sha256((SOURCE/'front-reference.png').read_bytes()).hexdigest(),'manifestSHA256':hashlib.sha256((SOURCE/'layers.json').read_bytes()).hexdigest(),'permission':'Pending confirmation for this asset pack.'}}
+ 'source':{'pack':'White_Xbox_Controller_Assets.zip','frontReferenceSHA256':hashlib.sha256((SOURCE/'front-reference.png').read_bytes()).hexdigest(),'manifestSHA256':hashlib.sha256((SOURCE/'layers.json').read_bytes()).hexdigest(),'permission':'Owner confirmed commercial customization and redistribution permission on 2026-11-14.'}}
 (ROOT/'app/controller-data'/f'{MODEL}.js').write_text('// User-supplied rendered Xbox layers; attribution and source audit: docs/xbox-white-render-audit.md.\nCONTROLLER_PACKS['+json.dumps(MODEL)+']='+json.dumps({'White':record},separators=(',',':'))+';\n')
 thumb=front.copy();thumb.thumbnail((400,350));folder=ROOT/'app/controller-thumbnails'/MODEL;folder.mkdir(parents=True,exist_ok=True);thumb.save(folder/'White.png')
 path=ROOT/'app/controller-catalog.js';catalog=json.loads(path.read_text().split('const CONTROLLER_CATALOG=')[1].strip().rstrip(';'));catalog=[m for m in catalog if m['id']!=MODEL]
