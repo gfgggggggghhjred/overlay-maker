@@ -5,6 +5,7 @@ function createInputAudit(){
  const item=(id,label,kind)=>({id,label,kind,held:false,done:false,seen:new Set()});
  function start(pad){if(!pad||pad.mapping!=='standard')throw Error('Connect a controller in PC / XInput mode first.');device=String(pad.index??0)+'|'+pad.id;started=true;items=buttons.map(id=>item(id,id.replace('DPad_','D-pad '),'button'));unsupported=[];
   if(pad.buttons.length>16)items.push({...item('Home','Home (optional, if exposed)','button'),optional:true});else unsupported.push('Home is not exposed by this device.');
+  if(pad.buttons.length>17)items.push({...item('Touchpad','Button 17 / touchpad click (optional, if exposed)','button'),optional:true});
   for(const id of ['LT','RT'])items.push(item(id,id+' depth and release','trigger'));
   items.push(item('LS','Left stick: full travel and neutral','stick'),item('RS','Right stick: full travel and neutral','stick'));
   for(const v of ['Up','Down'])for(const h of ['Left','Right'])items.push(item(v+h,'D-pad '+v.toLowerCase()+' + '+h.toLowerCase(),'diagonal'));

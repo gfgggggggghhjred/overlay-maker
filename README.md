@@ -1,10 +1,10 @@
 # Overlay Studio
 
-Internal Windows production tool for creating, testing and delivering controller customer overlays. Version 0.17.0 is a **Windows prerelease** for producer acceptance testing. Physical-controller and target-app validation limits are documented below.
+Internal Windows production tool for creating, testing and delivering controller customer overlays. Version 0.18.0 is a **Windows prerelease** for producer acceptance testing. Physical-controller and target-app validation limits are documented below.
 
 ## Run the Windows app
 
-Download [Overlay-Studio-Windows-x64.zip](https://github.com/BrandonFromFresno/overlay-maker/releases/download/v0.17.0/Overlay-Studio-Windows-x64.zip) from the [0.17.0 prerelease](https://github.com/BrandonFromFresno/overlay-maker/releases/tag/v0.17.0). Extract the entire ZIP, then open **Overlay Studio.exe**. Keep the adjacent files together. The ZIP includes [START-HERE.txt](START-HERE.txt).
+Download [Overlay-Studio-Windows-x64.zip](https://github.com/BrandonFromFresno/overlay-maker/releases/download/v0.18.0/Overlay-Studio-Windows-x64.zip) from the [0.18.0 prerelease](https://github.com/BrandonFromFresno/overlay-maker/releases/tag/v0.18.0). Extract the entire ZIP, then open **Overlay Studio.exe**. Keep the adjacent files together. The ZIP includes [START-HERE.txt](START-HERE.txt).
 
 The extracted app needs no account, Node.js, internet connection or GameSir server. Connect a browser-standard gamepad, focus the app and press a button. Live preview starts automatically. Connection feedback, the input-device picker and setup help are below the preview.
 
@@ -93,3 +93,7 @@ The Windows workflow runs the same checks before packaging. See [DEVELOPMENT.md]
 
 
 The [Controller Layer Pack](CONTROLLER-LAYER-PACK.md) adds ten additional PlayStation and Xbox skins using their supplied caps, socket patches and measured input layers. Existing GameSir options remain available.
+
+## Shaded DualSense template (0.18)
+
+Choose **DualSense · Shaded** in Templates for the new dark rendered controller. It uses the existing customization and standalone customer-delivery workflow. Touchpad click responds when browser button 17 is available; mute is preview-only. Source attribution, native-resolution limits and verification are recorded in [the DualSense audit](docs/dualsense-reference-audit.md).

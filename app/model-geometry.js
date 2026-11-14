@@ -33,11 +33,11 @@ function buildModelGeometry(record,image,layerImages={}){
   let dominant=0;for(let i=1;i<32;i++)if(hist[i]>hist[dominant])dominant=i;const backdrop=dominant*8+4;
   if(f.layeredMaterial){
    const shade=canvas(width,height),colorInk=canvas(width,height),shadePixels=new ImageData(new Uint8ClampedArray(pixels.data),width,height),colorPixels=new ImageData(new Uint8ClampedArray(pixels.data),width,height);
-   for(let i=0;i<pixels.data.length;i+=4){const level=luma(i),a=mask[i+3]*pixels.data[i+3]/255,v=Math.round(255*Math.max(.45,Math.min(1,level/Math.max(16,backdrop))));shadePixels.data[i]=shadePixels.data[i+1]=shadePixels.data[i+2]=v;shadePixels.data[i+3]=a;const chroma=Math.max(pixels.data[i],pixels.data[i+1],pixels.data[i+2])-Math.min(pixels.data[i],pixels.data[i+1],pixels.data[i+2]);colorPixels.data[i+3]=f.preserveColorInk&&chroma>40?a:0;}
+   for(let i=0;i<pixels.data.length;i+=4){const level=luma(i),a=mask[i+3]*pixels.data[i+3]/255,v=Math.round(255*(spec.materialRange ? .12+.88*Math.pow(Math.max(0,Math.min(1,(level-spec.materialRange[0])/(spec.materialRange[1]-spec.materialRange[0]))),.75) : Math.max(.45,Math.min(1,level/Math.max(16,backdrop)))));shadePixels.data[i]=shadePixels.data[i+1]=shadePixels.data[i+2]=v;shadePixels.data[i+3]=a;const chroma=Math.max(pixels.data[i],pixels.data[i+1],pixels.data[i+2])-Math.min(pixels.data[i],pixels.data[i+1],pixels.data[i+2]);colorPixels.data[i+3]=f.preserveColorInk&&chroma>40?a:0;}
    shade.getContext('2d').putImageData(shadePixels,0,0);colorInk.getContext('2d').putImageData(colorPixels,0,0);f.nativeShade=shade;f.nativeColorInk=colorInk;
   }
   for(let i=0;i<pixels.data.length;i+=4){const difference=Math.abs(luma(i)-backdrop),alpha=mask[i+3]&&pixels.data[i+3]?Math.max(0,Math.min(255,(difference-24)*5)):0;pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=255;pixels.data[i+3]=alpha;}
-  ic.putImageData(pixels,0,0);Object.assign(f,{nativeInk:ink,inkTint:canvas(width,height),inkX:ix,inkY:iy,inkColor:''});
+  ic.putImageData(pixels,0,0);Object.assign(f,{nativeInk:spec.materialRange?null:ink,inkTint:canvas(width,height),inkX:ix,inkY:iy,inkColor:''});
  }
  const sticks=[],images={base,modelFloat:floating},rimCircles=[];
  for(const[item,index]of spec.sticks.map((s,i)=>[s,i])){
@@ -51,5 +51,5 @@ function buildModelGeometry(record,image,layerImages={}){
  const staticMask=canvas(W,H),colorProtection=canvas(W,H),sc=staticMask.getContext('2d'),cc=colorProtection.getContext('2d');sc.fillStyle=cc.fillStyle='#ffffff';
  for(const shape of spec.protectedShapes||[]){const p=new Path2D();p.addPath(pathFor(shape),matrix.multiply(new DOMMatrix(shape.matrix)));sc.fill(p,shape.fillRule||'nonzero');if(shape.preserveColor)cc.fill(p,shape.fillRule||'nonzero');}
  let fixedArtwork=null;if((spec.protectedShapes||[]).some(s=>s.preserveColor)){fixedArtwork=canvas(W,H);const fc=fixedArtwork.getContext('2d');fc.drawImage(base,0,0);fc.globalCompositeOperation='destination-in';fc.drawImage(colorProtection,0,0);fc.globalCompositeOperation='source-over';}
- return{layered:!!spec.layered,floatArtwork:!!spec.floatArtwork,faces,faceKeys:Object.keys(faces),stickLayout:sticks,images,rimCircles,staticMask,colorProtection,fixedArtwork,scale};
+ return{materialRange:spec.materialRange,layered:!!spec.layered,floatArtwork:!!spec.floatArtwork,faces,faceKeys:Object.keys(faces),stickLayout:sticks,images,rimCircles,staticMask,colorProtection,fixedArtwork,scale};
 }

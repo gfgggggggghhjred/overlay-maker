@@ -1,0 +1,18 @@
+DUALSENSE SHADED ARTWORK — ATTRIBUTION AND PERMISSION RECORD
+
+Template: DualSense · Shaded / Dark
+Reference fork: https://github.com/Hammy18/dualsense_overlay
+Reference commit: 8ce4d80bf4260c7d3ccdea5469ec0651403579d1
+Original project/artwork host: https://github.com/philipbry/dualsense_overlay
+Image host: https://philipbry.github.io/
+
+The application owner confirmed permission to customize and redistribute this
+artwork in commercial customer overlays on 2026-11-14. The upstream repositories
+contain no public license file. This record documents that confirmation; it does
+not represent a new public license granted by the original artist.
+
+The original README describes a free streaming overlay. Source URLs, SHA-256
+hashes and original files are retained in reference-assets/dualsense-hammy18 in
+the development repository. Overlay Studio adapts measured sprite geometry to
+its shared renderer/input system. Gamepad Viewer code and remote dependencies
+are not required by the application or customer exports.

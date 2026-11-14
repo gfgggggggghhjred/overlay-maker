@@ -1,0 +1,257 @@
+{
+  "source": {
+    "repository": "https://github.com/Hammy18/dualsense_overlay",
+    "commit": "8ce4d80bf4260c7d3ccdea5469ec0651403579d1",
+    "upstream": "https://github.com/philipbry/dualsense_overlay",
+    "imageHost": "https://philipbry.github.io/",
+    "permission": "User confirmed commercial customization and redistribution permission on 2026-11-14; upstream has no public license file.",
+    "originalSHA256": "3a161b882e16341df1c0b14283a13f0a0a72da9dd782466c873e8fb1fa00b885"
+  },
+  "controls": [
+    {
+      "key": "A",
+      "position": [
+        618,
+        268
+      ],
+      "size": [
+        54,
+        54
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "B",
+      "position": [
+        677,
+        211
+      ],
+      "size": [
+        54,
+        54
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "X",
+      "position": [
+        559,
+        210
+      ],
+      "size": [
+        54,
+        54
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "Y",
+      "position": [
+        618,
+        152
+      ],
+      "size": [
+        54,
+        54
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "DPad_Up",
+      "position": [
+        127,
+        171
+      ],
+      "size": [
+        44,
+        58
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "DPad_Down",
+      "position": [
+        127,
+        246
+      ],
+      "size": [
+        44,
+        58
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "DPad_Left",
+      "position": [
+        82,
+        216
+      ],
+      "size": [
+        57,
+        44
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "DPad_Right",
+      "position": [
+        157,
+        215
+      ],
+      "size": [
+        57,
+        44
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "Share",
+      "position": [
+        200,
+        132
+      ],
+      "size": [
+        23,
+        37
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "Options",
+      "position": [
+        572,
+        132
+      ],
+      "size": [
+        23,
+        37
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "LB",
+      "position": [
+        90,
+        98
+      ],
+      "size": [
+        114,
+        36
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "RB",
+      "position": [
+        590,
+        98
+      ],
+      "size": [
+        114,
+        36
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "LT",
+      "position": [
+        100,
+        0
+      ],
+      "size": [
+        100,
+        97
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "RT",
+      "position": [
+        593,
+        0
+      ],
+      "size": [
+        100,
+        97
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "Touchpad",
+      "position": [
+        237,
+        97
+      ],
+      "size": [
+        320,
+        167
+      ],
+      "shape": "source alpha >= 128"
+    },
+    {
+      "key": "Home",
+      "position": [
+        374,
+        318
+      ],
+      "size": [
+        45,
+        48
+      ],
+      "shape": "Curved mask following the raised PS emblem; retains its interior cutouts."
+    },
+    {
+      "key": "M",
+      "position": [
+        377,
+        384
+      ],
+      "size": [
+        40,
+        15
+      ],
+      "shape": "source alpha >= 128"
+    }
+  ],
+  "sticks": [
+    {
+      "center": [
+        269.5,
+        341.5
+      ],
+      "capRadius": 47.5,
+      "rimRadius": 51,
+      "travel": 12,
+      "capImage": "lsCap",
+      "wellImage": "lsWell",
+      "layerBounds": [
+        222,
+        294,
+        95,
+        95
+      ]
+    },
+    {
+      "center": [
+        524.5,
+        341.5
+      ],
+      "capRadius": 47.5,
+      "rimRadius": 51,
+      "travel": 12,
+      "capImage": "rsCap",
+      "wellImage": "rsWell",
+      "layerBounds": [
+        477,
+        294,
+        95,
+        95
+      ]
+    }
+  ],
+  "nativeSize": [
+    794,
+    639
+  ],
+  "travelNote": "12 source pixels; explicit visual limit, not a device calibration or a value supplied by the CSS."
+}

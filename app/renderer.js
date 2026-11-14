@@ -68,7 +68,7 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
  function tint(image, color, width, height, normalized=false) {
   const c = document.createElement('canvas'); c.width = width; c.height = height;
   const g = c.getContext('2d'); g.drawImage(image, 0, 0, width, height);
-  if (color !== '#ffffff'&&normalized){const pixels=g.getImageData(0,0,width,height),rgb=[1,3,5].map(i=>parseInt(color.slice(i,i+2),16));for(let i=0;i<pixels.data.length;i+=4){const shade=.55+.45*(pixels.data[i]*.2126+pixels.data[i+1]*.7152+pixels.data[i+2]*.0722)/255;for(let k=0;k<3;k++)pixels.data[i+k]=rgb[k]*shade;}g.putImageData(pixels,0,0);}
+  if (color !== '#ffffff'&&normalized){const pixels=g.getImageData(0,0,width,height),rgb=[1,3,5].map(i=>parseInt(color.slice(i,i+2),16));for(let i=0;i<pixels.data.length;i+=4){const level=pixels.data[i]*.2126+pixels.data[i+1]*.7152+pixels.data[i+2]*.0722,shade=Array.isArray(normalized)? .12+.88*Math.pow(Math.max(0,Math.min(1,(level-normalized[0])/(normalized[1]-normalized[0]))),.75) : .55+.45*level/255;for(let k=0;k<3;k++)pixels.data[i+k]=rgb[k]*shade;}g.putImageData(pixels,0,0);}
   else if (color !== '#ffffff') {
    g.globalCompositeOperation = 'multiply'; g.fillStyle = color; g.fillRect(0, 0, width, height);
    g.globalCompositeOperation = 'destination-in'; g.drawImage(image, 0, 0, width, height);
@@ -142,15 +142,15 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
  function prepareBase(color,buttonColor) {
   const key=color+'|'+buttonColor;if(key===tintColor)return;tintColor=key;
   if(tinted.base)tinted.base.width=0;
-  tinted.base=tint(images.base,color,1672,941,!!modelGeometry?.layered);
-  const controls=tint(images.base,buttonColor,1672,941,!!modelGeometry?.layered),g=controls.getContext('2d');
+  tinted.base=tint(images.base,color,1672,941,modelGeometry?.materialRange||!!modelGeometry?.layered);
+  const controls=tint(images.base,buttonColor,1672,941,modelGeometry?.materialRange||!!modelGeometry?.layered),g=controls.getContext('2d');
   g.globalCompositeOperation='destination-in';g.drawImage(controlMask,0,0);
   const body=tinted.base.getContext('2d');body.globalCompositeOperation='destination-out';body.drawImage(controlMask,0,0);body.globalCompositeOperation='lighter';body.drawImage(controls,0,0);body.globalCompositeOperation='source-over';if(modelGeometry?.fixedArtwork)body.drawImage(modelGeometry.fixedArtwork,0,0);controls.width=0;
  }
  function cap(key, color) {
   const id = key + color;
   if (!capCache.has(id)) { if (capCache.size >= 32) capCache.clear(); const c=tint(images[key],activeSkin?'#ffffff':color,180,180),g=c.getContext('2d');
-   if(activeSkin&&color!=='#ffffff'){const pixels=g.getImageData(0,0,180,180),rgb=[1,3,5].map(i=>parseInt(color.slice(i,i+2),16));for(let i=0;i<pixels.data.length;i+=4){const shade=.65+.35*(pixels.data[i]*.2126+pixels.data[i+1]*.7152+pixels.data[i+2]*.0722)/255;for(let k=0;k<3;k++)pixels.data[i+k]=rgb[k]*shade;}g.putImageData(pixels,0,0);}
+   if(activeSkin&&color!=='#ffffff'){const pixels=g.getImageData(0,0,180,180),rgb=[1,3,5].map(i=>parseInt(color.slice(i,i+2),16));for(let i=0;i<pixels.data.length;i+=4){const level=pixels.data[i]*.2126+pixels.data[i+1]*.7152+pixels.data[i+2]*.0722,range=modelGeometry?.materialRange,shade=range? .12+.88*Math.pow(Math.max(0,Math.min(1,(level-range[0])/(range[1]-range[0]))),.75) : .65+.35*level/255;for(let k=0;k<3;k++)pixels.data[i+k]=rgb[k]*shade;}g.putImageData(pixels,0,0);}
    // The supplied crop includes socket/rim pixels. Only the rubber cap moves.
    g.globalCompositeOperation='destination-in';g.beginPath();g.arc(90,90,86,0,Math.PI*2);g.fill();g.globalCompositeOperation='source-over';capCache.set(id,c); }
   return capCache.get(id);
@@ -174,7 +174,7 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
  }
  function face(key, color, pressed,onlyFloat=false) {
   const f=faces[key];if(!f)return;const [x,y]=f.center;
-  if(f.modelFace){ctx.save();ctx.fillStyle=color;for(const part of f.parts){if(onlyFloat&&!part.floating)continue;ctx.globalCompositeOperation=part.floating?'source-over':'source-atop';ctx.fill(part.path,part.rule);}ctx.globalCompositeOperation='source-over';if(f.nativeShade){ctx.save();ctx.clip(f.path);ctx.globalCompositeOperation='multiply';ctx.drawImage(f.nativeShade,f.inkX,f.inkY);ctx.restore();}if(f.nativeInk&&!onlyFloat){ctx.save();ctx.clip(f.path);const ink=contrast(color);if(f.inkColor!==ink){f.inkColor=ink;const g=f.inkTint.getContext('2d');g.clearRect(0,0,f.inkTint.width,f.inkTint.height);g.drawImage(f.nativeInk,0,0);g.globalCompositeOperation='source-in';g.fillStyle=ink;g.fillRect(0,0,f.inkTint.width,f.inkTint.height);g.globalCompositeOperation='source-over';}ctx.drawImage(f.inkTint,f.inkX,f.inkY);ctx.restore();}if(f.nativeColorInk){ctx.save();ctx.clip(f.path);ctx.drawImage(f.nativeColorInk,f.inkX,f.inkY);ctx.restore();}if(f.floatBounds&&!f.sourceLabels){const [bx,by,bw,bh]=f.floatBounds;ctx.save();ctx.clip(f.path);label(key,bx+bw/2,by+bh*.68,Math.min(30,bw*.18),contrast(color));ctx.restore();}ctx.restore();return;}
+  if(f.modelFace){ctx.save();ctx.fillStyle=color;for(const part of f.parts){if(onlyFloat&&!part.floating)continue;ctx.globalCompositeOperation=part.floating&&!modelGeometry.floatArtwork?'source-over':'source-atop';ctx.fill(part.path,part.rule);}ctx.globalCompositeOperation='source-over';if(f.nativeShade){ctx.save();ctx.clip(f.path);ctx.globalCompositeOperation='multiply';ctx.drawImage(f.nativeShade,f.inkX,f.inkY);ctx.restore();}if(f.nativeInk&&!onlyFloat){ctx.save();ctx.clip(f.path);const ink=contrast(color);if(f.inkColor!==ink){f.inkColor=ink;const g=f.inkTint.getContext('2d');g.clearRect(0,0,f.inkTint.width,f.inkTint.height);g.drawImage(f.nativeInk,0,0);g.globalCompositeOperation='source-in';g.fillStyle=ink;g.fillRect(0,0,f.inkTint.width,f.inkTint.height);g.globalCompositeOperation='source-over';}ctx.drawImage(f.inkTint,f.inkX,f.inkY);ctx.restore();}if(f.nativeColorInk){ctx.save();ctx.clip(f.path);ctx.drawImage(f.nativeColorInk,f.inkX,f.inkY);ctx.restore();}if(f.floatBounds&&!f.sourceLabels){const [bx,by,bw,bh]=f.floatBounds;ctx.save();ctx.clip(f.path);label(key,bx+bw/2,by+bh*.68,Math.min(30,bw*.18),contrast(color));ctx.restore();}ctx.restore();return;}
 
   if(activeSkin){ctx.save();ctx.clip(f.path);ctx.globalCompositeOperation='source-atop';ctx.fillStyle=color;ctx.fill(f.path);
    if(f.nativeInk){const ink=contrast(color);if(f.inkColor!==ink){f.inkColor=ink;const g=f.inkTint.getContext('2d');g.clearRect(0,0,f.inkTint.width,f.inkTint.height);g.drawImage(f.nativeInk,0,0);g.globalCompositeOperation='source-in';g.fillStyle=ink;g.fillRect(0,0,f.inkTint.width,f.inkTint.height);g.globalCompositeOperation='source-over';}ctx.drawImage(f.inkTint,f.inkX,f.inkY);}
@@ -290,11 +290,11 @@ function normalizeOverlayInput(state={}){
  const number=(v,min,max)=>typeof v==='number'&&Number.isFinite(v)?Math.max(min,Math.min(max,v)):0;
  const out={axes:Array.from({length:4},(_,i)=>number(state?.axes?.[i],-1,1))};
  for(const i of [0,2]){const length=Math.hypot(out.axes[i],out.axes[i+1]);if(length>1){out.axes[i]/=length;out.axes[i+1]/=length;}}
- for(const key of ['A','B','X','Y','LB','RB','Home','Share','Options','Capture','M','DPad_Up','DPad_Down','DPad_Left','DPad_Right','LSB','RSB','L4','R4','L5','R5','C1','C2','C3','C4','T1','T2','T3'])out[key]=state?.[key]===true||number(state?.[key],0,1)>.5;
+ for(const key of ['A','B','X','Y','LB','RB','Home','Share','Options','Capture','M','Touchpad','DPad_Up','DPad_Down','DPad_Left','DPad_Right','LSB','RSB','L4','R4','L5','R5','C1','C2','C3','C4','T1','T2','T3'])out[key]=state?.[key]===true||number(state?.[key],0,1)>.5;
  out.LT=number(state?.LT,0,1);out.RT=number(state?.RT,0,1);return out;
 }
 function readStandardGamepad(pad){
  const keys=['A','B','X','Y','LB','RB','LT','RT','Share','Options','LSB','RSB','DPad_Up','DPad_Down','DPad_Left','DPad_Right','Home'];
  if(!pad||pad.connected===false)return normalizeOverlayInput();
- const out={axes:pad.axes};keys.forEach((k,i)=>{out[k]=i===6||i===7?pad.buttons?.[i]?.value:pad.buttons?.[i]?.pressed;});return normalizeOverlayInput(out);
+ const out={axes:pad.axes};keys.forEach((k,i)=>{out[k]=i===6||i===7?pad.buttons?.[i]?.value:pad.buttons?.[i]?.pressed;});out.Touchpad=pad.buttons?.[17]?.pressed;return normalizeOverlayInput(out);
 }
