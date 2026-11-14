@@ -1,7 +1,7 @@
 // Original vector emblems and materials. Artwork stays sharp at native export size.
 // No downloaded sprites, traced footage, or decorative text is used.
 function createButtonArtworkPainter(){
- const TAU=Math.PI*2,cache=new Map();
+ const TAU=Math.PI*2,cache=new Map(),identity=createAnimeIdentityPainter();
  const mix=(a,b,t)=>'#'+[1,3,5].map(i=>Math.round(parseInt(a.slice(i,i+2),16)*(1-t)+parseInt(b.slice(i,i+2),16)*t).toString(16).padStart(2,'0')).join('');
  const rgba=(a,opacity)=>`rgba(${[1,3,5].map(i=>parseInt(a.slice(i,i+2),16)).join(',')},${opacity})`;
  const paths={
@@ -28,6 +28,7 @@ function createButtonArtworkPainter(){
   c.save();c.scale(.45,.6);c.translate(0,r*.55);c.fillStyle=mix(ink,'#ffffff',.8);c.fill(p);c.restore();
  }
  function symbol(c,kind,r,phase=0){
+  if(identity.symbol(c,kind,r,phase))return;
   c.save();c.scale(r,r);c.lineWidth=.06;c.lineCap='round';c.lineJoin='round';const ink=typeof c.fillStyle==='string'&&/^#[0-9a-f]{6}$/i.test(c.fillStyle)?c.fillStyle:'#f4dfac';
   const material=c.createLinearGradient(-.7,-1,.8,1);material.addColorStop(0,mix(ink,'#ffffff',parseInt(ink.slice(1,3),16)<50?.08:.5));material.addColorStop(.45,ink);material.addColorStop(1,mix(ink,'#000000',.28));c.fillStyle=material;c.strokeStyle=ink;
   if(paths[kind]){const p=path(paths[kind]);c.save();c.translate(.025,.04);c.fillStyle='#060a1280';c.fill(p,'evenodd');c.restore();c.fill(p,'evenodd');c.strokeStyle=rgba(mix(ink,'#ffffff',.7),.4);c.lineWidth=.025;c.stroke(p);}
@@ -72,7 +73,17 @@ function createButtonArtworkPainter(){
  function draw(ctx,f,key,style,p,state,time){
   if(!f||!style||style==='none')return;const home=key==='Home',active=!!state[key],r=Math.max(8,(f.radius||50)-4),t=time/(p.effectSpeed*1000)*TAU;
   const colors=p.buttonColors?.[key]||{},pressed=colors.pressed||p.pressed,base=colors.rest||p.buttonBaseColor||'#ffffff',ink=p.accent,orb=style==='dragon-balls',eye=style==='sharingan';
-  const dark=orb?'#713008':eye?'#28050e':style==='rasengan'?'#04182e':mix(base,'#0b1220',.88),mid=orb?'#e98a19':eye?'#a61630':mix(ink,'#111824',.72);
+  const material={
+   'leaf-seal':['#c6cdd0','#7e9097'],'ninja-seals':['#c0cbd0','#748992'],'uchiha-seals':['#d9cec8','#80717c'],
+   'straw-hat':['#2d5469','#172b3c'],'pirate-coins':['#d8bb75','#8d6135'],'hell-butterfly':['#d7d2df','#8b839b'],'soul-marks':['#d4d3dc','#827f91'],
+   'pull-cord':['#e2e0d3','#929e95'],'saw-teeth':['#d9ddd3','#8a9a90'],'hunter-mark':['#e9dfbf','#a8aa83'],'hunter-cards':['#e5dcc1','#a2a77f'],
+   clover:['#c6af86','#806749'],'clover-runes':['#c3a77e','#7f6249'],millennium:['#42354e','#24212f'],'duel-gems':['#42354e','#24212f'],
+   ladybug:['#983c70','#502644'],'gold-stars':['#983c70','#502644'],'wise-pin':['#35533f','#1b3026'],'spy-tech':['#35533f','#1b3026'],
+   'turbo-cat':['#4f6460','#273833'],'occult-eyes':['#4f6460','#273833'],'kaiju-mask':['#243b43','#14262d'],'kaiju-cores':['#243b43','#14262d'],
+   'round-glasses':['#5d7853','#2c4834'],crosshairs:['#5d7853','#2c4834'],'flame-guard':['#594239','#29252c'],'flame-guards':['#594239','#29252c']
+  }[style];
+  const mid=colors.rest||(orb?'#f29b24':eye?'#b92336':material?.[0]||mix(ink,'#111824',.72)),dark=orb?'#8b430e':eye?'#3b0c19':material?.[1]||mix(base,'#0b1220',.88);
+
   ctx.save();ctx.clip(f.path);ctx.translate(...f.center);ctx.scale(r/56,r/56);
   const surface=ctx.createRadialGradient(-18,-24,0,0,6,65);surface.addColorStop(0,orb?'#fff1a8':eye?'#e84657':mix(mid,'#ffffff',.13));surface.addColorStop(.55,mid);surface.addColorStop(1,dark);disk(ctx,0,0,56,surface);
   ring(ctx,54,mix(mid,'#ffffff',.35),1);ring(ctx,51,active?pressed:rgba(ink,.55),active?4:1.2);ring(ctx,48,rgba('#02050c',.6),1);
@@ -81,10 +92,10 @@ function createButtonArtworkPainter(){
    ctx.strokeStyle='rgba(255,224,140,.6)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(0,0,44,.15,1.65);ctx.stroke();
   }else if(style==='rasengan')energyOrb(ctx,45,t,'#278fd8');
   else if(eye){
-   for(let i=0;i<48;i++){const a=i*TAU/48+Math.sin(i*7)*.012;ctx.strokeStyle=i%3?'#5b092780':'#ff6c6838';ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(Math.cos(a)*18,Math.sin(a)*18);ctx.lineTo(Math.cos(a)*43,Math.sin(a)*43);ctx.stroke();}ctx.save();ctx.fillStyle='#160710';symbol(ctx,'sharingan',43,t);ctx.restore();
+   ctx.save();ctx.fillStyle='#160710';symbol(ctx,'sharingan',43,t);ctx.restore();
   }else{
-   const motif={ 'ninja-seals':['leaf-seal','kunai','shuriken','rasengan'],'pirate-coins':['straw-hat','anchor','pirate-skull','compass'],'soul-marks':['hell-butterfly','anti-magic','soul-flame','hell-butterfly'],'gold-stars':['ladybug','star','rose','ladybug'],'hero-tech':['hero-bolt','crosshair','hero-bolt','crosshair'] }[style]?.[['A','B','X','Y'].indexOf(key)]||{'slayer-crests':'water-crest','cursed-seals':'void','saw-teeth':'saw','hunter-cards':'card','clover-runes':'clover','duel-gems':'millennium','spy-tech':'rose','occult-eyes':'alien','kaiju-cores':'ki-core','crosshairs':'crosshair'}[style]||style;
-   ctx.fillStyle=style==='flame'?'#ffac48':style==='soul-flame'?'#80e6ff':mix(ink,'#ffffff',.55);symbol(ctx,motif,home?35:29,t);
+   const motif={ 'ninja-seals':['leaf-seal','kunai','shuriken','rasengan'],'pirate-coins':['straw-hat','anchor','pirate-skull','compass'],'soul-marks':['hell-butterfly','spirit-blade','hell-butterfly','spirit-blade'],'gold-stars':['ladybug','ladybug','ladybug','ladybug'],'hero-tech':['deku-mask','hero-bolt','deku-mask','hero-bolt'],'uchiha-seals':['uchiha-fan','kunai','shuriken','sharingan'] }[style]?.[['A','B','X','Y'].indexOf(key)]||{'slayer-crests':'water-crest','cursed-seals':'void','saw-teeth':'pull-cord','hunter-cards':'hunter-mark','clover-runes':'clover','duel-gems':'millennium','spy-tech':'wise-pin','occult-eyes':'turbo-cat','kaiju-cores':'kaiju-mask','crosshairs':'round-glasses','flame-guards':'flame-guard'}[style]||style;
+   ctx.fillStyle=style==='flame'?'#ffac48':style==='soul-flame'?'#80e6ff':mix(ink,'#ffffff',.55);if(motif==='rasengan')energyOrb(ctx,home?35:29,t,'#278fd8');else{if(['ninja-seals','uchiha-seals','soul-marks'].includes(style))ctx.fillStyle='#26313b';symbol(ctx,motif,home?35:29,t);}
   }
   // A restrained specular crescent gives every material a clean spherical edge.
   ctx.save();ctx.rotate(Math.sin(t*.35)*.12);const sheen=ctx.createLinearGradient(-40,-35,25,-15);sheen.addColorStop(0,'rgba(255,255,255,0)');sheen.addColorStop(.55,orb?'rgba(255,255,255,.6)':'rgba(255,255,255,.13)');sheen.addColorStop(1,'rgba(255,255,255,0)');ctx.strokeStyle=sheen;ctx.lineWidth=orb?5:2;ctx.beginPath();ctx.arc(0,0,44,3.75,5.35);ctx.stroke();ctx.restore();

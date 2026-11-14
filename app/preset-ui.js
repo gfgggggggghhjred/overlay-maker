@@ -13,7 +13,7 @@ function filterPresets(){
 async function startPresetPreviews(){
  const snapshot={...project},key=controllerAppearanceKey(snapshot);if(presetsStarted&&presetPreviewKey===key)return;presetsStarted=true;presetPreviewKey=key;
  try{const canvas=document.createElement('canvas');canvas.width=1672;canvas.height=1241;const painter=await createOverlayRenderer(canvas,await controllerAssetsFor(snapshot),FONT_DATA);
-  for(const preset of PRESET_DATA){if(presetPreviewKey!==key)return;const p=buildPresetProject({...defaults,visualModel:visualModelOf(snapshot),nativeSkin:snapshot.nativeSkin,text:''},preset);painter.draw({...p,breathing:false,glow:3},{},1200,true);const target=document.querySelector('[data-preset="'+preset.id+'"] canvas');target?.getContext('2d').drawImage(canvas,0,0,280,210);await new Promise(resolve=>requestAnimationFrame(resolve));}
+  for(const preset of PRESET_DATA){if(presetPreviewKey!==key)return;const p=buildPresetProject({...defaults,visualModel:visualModelOf(snapshot),nativeSkin:snapshot.nativeSkin,mode:'text',text:''},preset,{wordmark:false});painter.draw({...p,breathing:false,glow:3},{},1200,true);const target=document.querySelector('[data-preset="'+preset.id+'"] canvas');target?.getContext('2d').drawImage(canvas,0,1,280,280*1241/1672);await new Promise(resolve=>requestAnimationFrame(resolve));}
  }catch{if(presetPreviewKey===key)presetsStarted=false;status('Some theme previews could not load. Presets are still available.');}
 }
 function initializePresetUI(){
@@ -32,5 +32,5 @@ function initializePresetUI(){
  $('editButtonArt').onclick=$('editTheme').onclick=openThemeEditor;
  $('previewThemeInputs').onclick=()=>{const next=mode==='demo'?'rest':'demo';clearInputPreview();setMode(next);};
  $('restoreTheme').onclick=()=>{const preset=PRESET_DATA.find(p=>p.id===(project.presetOrigin||project.presetId));if(!preset)return;checkpoint();project=validate(buildPresetProject(project,preset,{wordmark:false}));clearInputPreview();sync();persist();status(preset.name+' look restored. Your artwork, texture and controller position are preserved.');};
- $('removeTheme').onclick=()=>{checkpoint();Object.assign(project,{themeStyle:'none',buttonStyle:'none',homeStyle:'none',presetId:'',presetOrigin:''});sync();persist();status('Theme artwork removed. Your colors, texture, layout and effects are preserved.');};
+ $('removeTheme').onclick=()=>{checkpoint();Object.assign(project,{themeStyle:'none',buttonStyle:'none',homeStyle:'none',themeAbilityEffects:false,presetId:'',presetOrigin:''});sync();persist();status('Theme artwork removed. Your colors, texture, layout and effects are preserved.');};
 }

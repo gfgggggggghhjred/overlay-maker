@@ -130,7 +130,7 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
     for(let i=0;i<data.data.length;i+=4){const difference=backdrop>=128?backdrop-luma(i):luma(i)-backdrop,alpha=Math.max(0,Math.min(255,(difference-22)*5));data.data[i]=data.data[i+1]=data.data[i+2]=255;data.data[i+3]=alpha;}
     const mask=document.createElement('canvas');mask.width=width;mask.height=height;mask.getContext('2d').putImageData(data,0,0);const inkTint=document.createElement('canvas');inkTint.width=width;inkTint.height=height;Object.assign(faces[key],{nativeInk:mask,inkTint,inkX:ix,inkY:iy,inkColor:''});
    }
-   faces.Home.protectedRadius=19*scale;
+   faces.Home.protectedRadius=19*scale;const themePath=new Path2D(),themeRadius=faces.Home.protectedRadius-6;themePath.arc(...faces.Home.center,themeRadius,0,Math.PI*2);faces.Home.themeFace={...faces.Home,path:themePath,radius:themeRadius};
    const d=activeSkin.testing.DPad,width=d.Width,center=point(d.X+width/2,d.Y+360),outer=30*width/66.61*scale,inner=9*width/66.61*scale;dpadCircle=[...center,width/2*scale];
    for(const[key,start,end]of [['Up',226,314],['Right',316,404],['Down',46,134],['Left',136,224]]){const path=new Path2D(),a=start*Math.PI/180,b=end*Math.PI/180;path.arc(...center,outer,a,b);path.arc(...center,inner,b,a,true);path.closePath();faces['DPad_'+key]={path,center,radius:outer,symbols:[]};}
   }
@@ -214,7 +214,7 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
   ctx.drawImage(triggerLayer,0,0,185,200,right?1090:365,38,185,200);
  }
  return {
-  hitTest(x,y){for(const key of faceKeys)if(modelGeometry?faces[key].parts.some(p=>ctx.isPointInPath(p.path,x,y,p.rule)):ctx.isPointInPath(faces[key].path,x,y))return key;for(const[sx,sy,,key,,radius]of stickLayout)if(Math.hypot(x-sx,y-sy)<radius*90/86)return key;if(!modelGeometry&&y>-262&&y<-62){if(x>365&&x<550)return 'LT';if(x>1090&&x<1275)return 'RT';}return null;},
+  hitTest(x,y){for(const key of faceKeys)if(modelGeometry?faces[key].parts.some(p=>ctx.isPointInPath(p.path,x,y,p.rule)):ctx.isPointInPath(faces[key].themeFace?.path||faces[key].path,x,y))return key;for(const[sx,sy,,key,,radius]of stickLayout)if(Math.hypot(x-sx,y-sy)<radius*90/86)return key;if(!modelGeometry&&y>-262&&y<-62){if(x>365&&x<550)return 'LT';if(x>1090&&x<1275)return 'RT';}return null;},
   abstractPhase:()=>abstractPainter.phase(),
   comicState:()=>comicPainter.inspect(),
   stickTrailState:()=>stickPainter.inspect(),
