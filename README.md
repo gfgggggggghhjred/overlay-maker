@@ -1,16 +1,18 @@
 # Overlay Studio
 
-Internal Windows production tool for creating, testing and delivering controller customer overlays. Version 0.19.0 is a **Windows prerelease** for producer acceptance testing. Physical-controller and target-app validation limits are documented below.
+Internal Windows production tool for creating, testing and delivering controller customer overlays. Version 0.20.0 is a **Windows prerelease** for producer acceptance testing. Physical-controller and target-app validation limits are documented below.
 
 ## Run the Windows app
 
-Download [Overlay-Studio-Windows-x64.zip](https://github.com/BrandonFromFresno/overlay-maker/releases/download/v0.19.0/Overlay-Studio-Windows-x64.zip) from the [0.19.0 prerelease](https://github.com/BrandonFromFresno/overlay-maker/releases/tag/v0.19.0). Extract the entire ZIP, then open **Overlay Studio.exe**. Keep the adjacent files together. The ZIP includes [START-HERE.txt](START-HERE.txt).
+Download [Overlay-Studio-Windows-x64.zip](https://github.com/BrandonFromFresno/overlay-maker/releases/download/v0.20.0/Overlay-Studio-Windows-x64.zip) from the [0.20.0 prerelease](https://github.com/BrandonFromFresno/overlay-maker/releases/tag/v0.20.0). Extract the entire ZIP, then open **Overlay Studio.exe**. Keep the adjacent files together. The ZIP includes [START-HERE.txt](START-HERE.txt).
 
 The extracted app needs no account, Node.js, internet connection or GameSir server. Connect a browser-standard gamepad, focus the app and press a button. Live preview starts automatically. Connection feedback, the input-device picker and setup help are below the preview.
 
 ## Production workspace and GameSir skin gallery
 
-The app opens with 27 visual families and 70 supplied skins, including the original 13 G7 Pro 8K designs, live previews and safe saved-job resume. Choose **Start without a template** for the neutral overlay. In the editor, **Shell → Use default overlay** restores the current visual model’s default appearance while keeping the job name; Undo restores the previous design. **Project options → Reset to selected skin** remains a separate action. Selected skins persist in projects and are embedded in finished customer overlays. New layouts retain supplied geometry in data packages with high-resolution transparent artwork; existing Studio projects retain their artwork. See [opening-gallery review](REVIEW-START-SCREEN.md). The preview is centered between a compact tool rail and a contextual inspector. Job naming stays in the header; movement and verification controls are above the canvas. Customer delivery and studio testing have distinct areas.
+The app opens with 30 visual families and 75 supplied skins, including the original 13 G7 Pro 8K designs, live previews and safe saved-job resume. Choose **Start without a template** for the neutral overlay. In the editor, **Shell → Use default overlay** restores the current visual model’s default appearance while keeping the job name; Undo restores the previous design. **Project options → Reset to selected skin** remains a separate action. Selected skins persist in projects and are embedded in finished customer overlays. New layouts retain supplied geometry in data packages with high-resolution transparent artwork; existing Studio projects retain their artwork. See [opening-gallery review](REVIEW-START-SCREEN.md). The preview is centered between a compact tool rail and a contextual inspector. Job naming stays in the header; movement and verification controls are above the canvas. Customer delivery and studio testing have distinct areas.
+
+SCUF Impact is available as an independent **Front preview** template with 14 front-control inputs and the supplied pearl artwork. Complete bumper, trigger and rear-paddle assets were not supplied; these inputs are not visualized. The gallery, editor and export panel show this limitation. See [SCUF source audit](docs/scuf-impact-audit.md). Existing rendered DualSense and Xbox templates remain separate.
 
 ## Easier navigation and customer setup
 
@@ -48,7 +50,7 @@ Included fonts: Rajdhani, Orbitron, Oxanium, Teko, Bebas Neue, Barlow Condensed,
 
 ## Visual models
 
-Templates now separates the visual model from the connected gamepad. Choose from 29 source-backed visual families and 74 skins; any browser-standard gamepad can drive any layout. Saved jobs retain their model. See [controller models, audit and limitations](CONTROLLER-MODELS.md).
+Templates now separates the visual model from the connected gamepad. Choose from 30 source-backed visual families and 75 skins; any browser-standard gamepad can drive any layout. Saved jobs retain their model. See [controller models, audit and limitations](CONTROLLER-MODELS.md).
 
 ## Produce and deliver customer overlays
 

@@ -1,0 +1,223 @@
+{
+  "sourceCanvas": [
+    2860,
+    2200
+  ],
+  "sourceResolution": {
+    "width": 1430,
+    "height": 1100
+  },
+  "compositionMaximumRoundingError": 1,
+  "detachedLowAlphaPixelsRemoved": 48335,
+  "controls": [
+    "A",
+    "B",
+    "X",
+    "Y",
+    "Share",
+    "Options",
+    "Home",
+    "Touchpad",
+    "DPad_Up",
+    "DPad_Down",
+    "DPad_Left",
+    "DPad_Right"
+  ],
+  "hashes": {
+    "layers/body.png": "ebeaeea48aa2ebeb207b33ac3fdc22a4265c7262cec019fe398667d6e30afc20",
+    "layers/socket_left.png": "6e28ebab2531a577fc5a35944cca8392dbe186a252d9b0c15db5f5f9f8c02181",
+    "layers/socket_right.png": "fca4c510344879a192f7de309866fdddf1a44e60a692c2d90f2383a97b9f79a0",
+    "layers/shoulder_left_visible.png": "6e523b1ae1af8f7fc02aeec77601446f42c91e7aafbaa913ac7f133f774481da",
+    "layers/shoulder_right_visible.png": "e1fd6b9caa1ef787e48dd54e5de2eed17e168a4105763f28e10779e1b89d582f",
+    "layers/stick_left_cap.png": "41cc49c89f59458cf278f5cb65368d83700452cd8a63fd54e2656d24169befcd",
+    "layers/stick_right_cap.png": "abb76e5fa7406bfa6cdcbd2fa7457245795548f880052ccaff43c37f5c98f9d8",
+    "layers/dpad_up.png": "1c7bac0f3f1873e72268917d7b13d163f3e24a79ba09310846b2cdd2354994ed",
+    "layers/dpad_right.png": "9ef68e85786b80ca11a5af0ce22fff68f0ca954790c9fdd23d1ddb52b7f32668",
+    "layers/dpad_down.png": "5dc69590e57fe4f8cfc221646b4da1ee51b1697a5301ffd75516198da543f6a8",
+    "layers/dpad_left.png": "10f961b578c96f35023d82661444cb38c2f5653b535bd50004ad323a82bcca2c",
+    "layers/button_north.png": "e0bcf5cc9c8f05083ab69ce9f29c8d9678eb7a2b3a788d8bb042bb3bf7448f63",
+    "layers/button_east.png": "b77ae5af8170c6df956723a5d2dcac8932e95b1dcc0f348b9344881747538293",
+    "layers/button_south.png": "5214b877a316c51d5d9569bf53a082b7e5233a3161cc1c8f6869c04511f9b817",
+    "layers/button_west.png": "268e55101ecdb6f08ac5c5db3d88fb73530976ca2f351c209f7abdae7464ea7a",
+    "layers/button_share.png": "db9bb89460d1d094fa181865d09573683a19e4c61ab807fac66f0ae3fcf2c86f",
+    "layers/button_options.png": "568aee866c74e2d05286726d20b11ca73cd32fb0b56d89f0d1d74e5b4e3baf97",
+    "layers/button_home.png": "0091b3a4722c762d3e9cdedf5e201a90a0e6a99bbff3377f4aef101cf12192b2",
+    "layers/touchpad.png": "81610dc98447a4b7632d1a4e8561378eb3cb5a719377a0c2b6fafc5150e29093"
+  },
+  "sticks": [
+    {
+      "center": [
+        1026,
+        1182
+      ],
+      "capRadius": 160.4061236190066,
+      "rimRadius": 245,
+      "travel": 36,
+      "capImage": "leftCap",
+      "wellImage": "leftWell",
+      "layerBounds": [
+        872,
+        1024,
+        308,
+        316
+      ],
+      "rimSamples": [
+        [
+          1246.0,
+          1182.0
+        ],
+        [
+          1229.253497152483,
+          1266.1903551203197
+        ],
+        [
+          1181.5634918610403,
+          1337.5634918610403
+        ],
+        [
+          1110.1903551203197,
+          1385.253497152483
+        ],
+        [
+          1026.0,
+          1402.0
+        ],
+        [
+          941.8096448796803,
+          1385.253497152483
+        ],
+        [
+          870.4365081389595,
+          1337.5634918610403
+        ],
+        [
+          822.7465028475169,
+          1266.1903551203197
+        ],
+        [
+          806.0,
+          1182.0
+        ],
+        [
+          822.7465028475169,
+          1097.8096448796803
+        ],
+        [
+          870.4365081389595,
+          1026.4365081389597
+        ],
+        [
+          941.8096448796801,
+          978.7465028475169
+        ],
+        [
+          1026.0,
+          962.0
+        ],
+        [
+          1110.1903551203197,
+          978.7465028475169
+        ],
+        [
+          1181.5634918610403,
+          1026.4365081389594
+        ],
+        [
+          1229.253497152483,
+          1097.80964487968
+        ]
+      ]
+    },
+    {
+      "center": [
+        1828,
+        1182
+      ],
+      "capRadius": 160.4061236190066,
+      "rimRadius": 245,
+      "travel": 36,
+      "capImage": "rightCap",
+      "wellImage": "rightWell",
+      "layerBounds": [
+        1674,
+        1024,
+        308,
+        316
+      ],
+      "rimSamples": [
+        [
+          2048.0,
+          1182.0
+        ],
+        [
+          2031.253497152483,
+          1266.1903551203197
+        ],
+        [
+          1983.5634918610403,
+          1337.5634918610403
+        ],
+        [
+          1912.1903551203197,
+          1385.253497152483
+        ],
+        [
+          1828.0,
+          1402.0
+        ],
+        [
+          1743.8096448796803,
+          1385.253497152483
+        ],
+        [
+          1672.4365081389597,
+          1337.5634918610403
+        ],
+        [
+          1624.746502847517,
+          1266.1903551203197
+        ],
+        [
+          1608.0,
+          1182.0
+        ],
+        [
+          1624.746502847517,
+          1097.8096448796803
+        ],
+        [
+          1672.4365081389594,
+          1026.4365081389597
+        ],
+        [
+          1743.80964487968,
+          978.7465028475169
+        ],
+        [
+          1828.0,
+          962.0
+        ],
+        [
+          1912.1903551203197,
+          978.7465028475169
+        ],
+        [
+          1983.5634918610403,
+          1026.4365081389594
+        ],
+        [
+          2031.253497152483,
+          1097.80964487968
+        ]
+      ]
+    }
+  ],
+  "missingVisualControls": [
+    "LB",
+    "RB",
+    "LT",
+    "RT",
+    "rear paddles"
+  ],
+  "hardwareVerified": false
+}

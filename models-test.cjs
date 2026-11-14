@@ -10,7 +10,7 @@ const {chromium}=require('@playwright/test'),assert=require('node:assert/strict'
    for(const key of variant.controls.filter(k=>!['LSB','RSB'].includes(k))){painter.draw(p,{[key]:['LT','RT'].includes(key)?1:true},1000);if(difference(neutral,read(c))<3)unchanged.push(key);}
    const states=[{axes:[1,1,-1,-1],LSB:true,RSB:true},{axes:[-1,-1,1,1],A:true,B:true,LB:true,RB:true,LT:.25,RT:.75},{DPad_Up:true,DPad_Right:true},{LT:1,RT:1}];
    const motion=states.map(state=>{painter.draw(p,state,1000);return difference(neutral,read(c));});
-   const depths=[0,.25,.5,.75,1].map(value=>{painter.draw(p,{LT:value,RT:value},1000);return c.toDataURL();});if(new Set(depths).size!==5)throw Error(model.id+'/'+variant.id+' trigger depth');
+   const hasTriggers=variant.controls.includes('LT')||variant.controls.includes('RT');const depths=[0,.25,.5,.75,1].map(value=>{painter.draw(p,{LT:value,RT:value},1000);return c.toDataURL();});if(new Set(depths).size!==(hasTriggers?5:1))throw Error(model.id+'/'+variant.id+' trigger depth');
    if(variant.id===model.defaultVariant){
     const im=new Image();im.src=controllerSkinRecord(p).cover;await im.decode();const geometry=buildModelGeometry(controllerSkinRecord(p),im);
     painter.draw({...p,baseColor:'#7048aa'}, {},1000);const tinted=read(c);
@@ -25,12 +25,12 @@ const {chromium}=require('@playwright/test'),assert=require('node:assert/strict'
     }
    }
    painter.draw(p,{},1000);
-   checks.push({model:model.id,variant:variant.id,unchanged,motion,neutral:c.toDataURL()===hash,spatial:controllerSkinRecord(p).modelGeometry.spatialRemap});
+   checks.push({model:model.id,variant:variant.id,unchanged,motion,hasTriggers,neutral:c.toDataURL()===hash,spatial:controllerSkinRecord(p).modelGeometry.spatialRemap});
    if(variant.id===model.defaultVariant){window.modelReview??={};modelReview[model.id]=c.toDataURL();}
   }
   return checks;
  });
- fs.writeFileSync(path.join(process.env.OVERLAY_TEST_OUTPUT||'/tmp','models-report.json'),JSON.stringify(report,null,2));for(const [model,data]of Object.entries(await page.evaluate(()=>window.modelReview||{})))fs.writeFileSync(path.join(process.env.OVERLAY_TEST_OUTPUT||'/tmp','model-'+model+'.png'),Buffer.from(data.split(',')[1],'base64'));assert.equal(report.length,await page.evaluate(()=>CONTROLLER_CATALOG.filter(m=>m.id!==DEFAULT_VISUAL_MODEL).reduce((n,m)=>n+m.variants.length,0)));assert(await page.evaluate(()=>controllerVariant('T3ProXBox','White').controls.includes('Home')),'Supplied center Home artwork must remain interactive');for(const r of report){assert.deepEqual(r.unchanged,[],r.model+'/'+r.variant+' input paths');if(r.model==='LayerPS1'){assert.equal(r.motion[0],0,'PS1 must not invent sticks');assert(r.motion.slice(1).every(n=>n>20),r.model+'/'+r.variant+' compound states');}else assert(r.motion.every(n=>n>20),r.model+'/'+r.variant+' compound/motion states');assert(r.neutral,r.model+'/'+r.variant+' releases return exactly neutral');}
+ fs.writeFileSync(path.join(process.env.OVERLAY_TEST_OUTPUT||'/tmp','models-report.json'),JSON.stringify(report,null,2));for(const [model,data]of Object.entries(await page.evaluate(()=>window.modelReview||{})))fs.writeFileSync(path.join(process.env.OVERLAY_TEST_OUTPUT||'/tmp','model-'+model+'.png'),Buffer.from(data.split(',')[1],'base64'));assert.equal(report.length,await page.evaluate(()=>CONTROLLER_CATALOG.filter(m=>m.id!==DEFAULT_VISUAL_MODEL).reduce((n,m)=>n+m.variants.length,0)));assert(await page.evaluate(()=>controllerVariant('T3ProXBox','White').controls.includes('Home')),'Supplied center Home artwork must remain interactive');for(const r of report){assert.deepEqual(r.unchanged,[],r.model+'/'+r.variant+' input paths');if(r.model==='LayerPS1'){assert.equal(r.motion[0],0,'PS1 must not invent sticks');assert(r.motion.slice(1).every(n=>n>20),r.model+'/'+r.variant+' compound states');}else {assert(r.motion.slice(0,3).every(n=>n>20),r.model+'/'+r.variant+' compound/motion states');assert(r.hasTriggers?r.motion[3]>20:r.motion[3]===0,r.model+'/'+r.variant+' declared trigger capability');}assert(r.neutral,r.model+'/'+r.variant+' releases return exactly neutral');}
  // Applying a different visual model never alters the physical controller selector.
  await page.selectOption('#visualModelChoice','T3Lite');await page.waitForFunction(()=>rendererReady&&!rendererLoading&&previewProject().visualModel==='T3Lite');
  assert.equal(await page.evaluate(()=>visualModelOf(project)),'G7ProCE');await page.click('#startEditing');assert.equal(await page.evaluate(()=>project.visualModel),'T3Lite');

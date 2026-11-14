@@ -1,0 +1,8 @@
+SCUF Impact front-preview artwork
+User-supplied SCUF_Impact_Preview_Quality (1).zip, integrated 2026-11-14.
+Raster layer source: 1430 x 1100, supplied at 2x working scale.
+No public artwork license is asserted. Original notices and untouched source
+files are retained in reference-assets/scuf-impact in the source repository.
+This front-preview template does not contain complete bumpers, triggers or
+rear paddle artwork. See docs/scuf-impact-audit.md for the source audit.
+SCUF names and marks remain the property of their respective owners.

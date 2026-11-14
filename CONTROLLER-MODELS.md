@@ -10,7 +10,7 @@ Models load on demand. Only the chosen variant is embedded in customer HTML. Cus
 
 ## Included visual inventory
 
-27 visual families, 70 variants: the established 13 G7 Pro 8K skins plus 47 additional supplied GameSir variants plus 10 skins from the Controller Layer Pack. See [layered controller integration](CONTROLLER-LAYER-PACK.md) for those five additional families. Source identifiers are retained where an official marketing name cannot be verified. These are visual templates, not claims that the matching hardware was physically tested.
+30 visual families, 75 variants: the established 13 G7 Pro 8K skins, 47 additional supplied GameSir variants, 10 Controller Layer Pack skins, three rendered DualSense finishes, one rendered Xbox finish and one SCUF Impact front preview. See [layered controller integration](CONTROLLER-LAYER-PACK.md) for those five additional families. Source identifiers are retained where an official marketing name cannot be verified. These are visual templates, not claims that the matching hardware was physically tested.
 
 | Source model ID | Variants | Available artwork |
 | --- | ---: | --- |
@@ -19,6 +19,9 @@ Models load on demand. Only the chosen variant is embedded in customer HTML. Cus
 | Layer Pack PlayStation 3 | 2 | Black, White |
 | Layer Pack Xbox 360 | 2 | Black, White |
 | Layer Pack Xbox Elite artwork | 2 | Elite 1 and Elite 2 source designs |
+| DualSenseShaded | 3 | Original dark / rose, Pearl / charcoal, Crimson / graphite |
+| XboxWhiteRender | 1 | White / graphite |
+| ScufImpactRender | 1 | Pearl front preview; no bumper, trigger or rear-paddle visualization |
 | G7ProCE | 13 | Gold, Aimlabs, GoldenApple, Crown, White, Black, Blue, GradientBlue, G7Pro, XReal, NBA2K, Nioh, YingRen |
 | C2 | 1 | White |
 | C3 | 1 | White |
@@ -60,7 +63,7 @@ Stick caps are isolated from the fixed housing/rims. Source SVG circular plates 
 
 ## Limits and release checks
 
-The browser must expose a standard mapping. Raw HID/nonstandard mappings need a validated adapter; universal visual selection does not manufacture missing hardware signals. Optional L4/R4/L5/R5, C1–C4 and T1–T3 artwork can be simulated where supplied. They are preview-only in this version. Independent live support requires a validated distinct-input adapter; merely exposing an extra browser button does not install such an adapter. Models without Home artwork do not receive a fabricated Home button.
+The browser must expose a standard mapping. Raw HID/nonstandard mappings need a validated adapter; universal visual selection does not manufacture missing hardware signals. Optional L4/R4/L5/R5, C1–C4 and T1–T3 artwork can be simulated where supplied. They are preview-only in this version. Independent live support requires a validated distinct-input adapter; merely exposing an extra browser button does not install such an adapter. Models without Home artwork do not receive a fabricated Home button. SCUF Impact currently has front artwork only: LB/RB/LT/RT and rear paddles have no visual surfaces. Its gallery, editor and export panel explicitly retain this limitation. See [SCUF source audit](docs/scuf-impact-audit.md).
 
 Automated model checks exercise every included geometry control, compound inputs, diagonal D-pad, trigger depth, stick travel/clicks and exact release to neutral. They also cover brand-independent standard input, isolated gallery selection, restoration/reset/Undo and self-contained customer output. Physical controllers, vendor firmware/modes, actual OBS/Streamlabs focus and target-machine performance still require hardware validation. Test the customer’s actual controller and final source before delivery.
 

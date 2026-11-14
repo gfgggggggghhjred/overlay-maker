@@ -1,0 +1,246 @@
+{
+  "canvas": {
+    "width": 2860,
+    "height": 2200
+  },
+  "units": "pixels",
+  "origin": "top-left",
+  "layerOrder": [
+    "body",
+    "socket_left",
+    "socket_right",
+    "shoulder_left_visible",
+    "shoulder_right_visible",
+    "stick_left_cap",
+    "stick_right_cap",
+    "dpad_up",
+    "dpad_right",
+    "dpad_down",
+    "dpad_left",
+    "button_north",
+    "button_east",
+    "button_south",
+    "button_west",
+    "button_share",
+    "button_options",
+    "button_home",
+    "touchpad"
+  ],
+  "layers": [
+    {
+      "id": "body",
+      "file": "layers/body.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1430,
+        1100
+      ],
+      "status": "approved preview artwork"
+    },
+    {
+      "id": "socket_left",
+      "file": "layers/socket_left.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1028,
+        1192
+      ],
+      "status": "approved preview artwork"
+    },
+    {
+      "id": "socket_right",
+      "file": "layers/socket_right.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1834,
+        1192
+      ],
+      "status": "approved preview artwork"
+    },
+    {
+      "id": "shoulder_left_visible",
+      "file": "layers/shoulder_left_visible.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        652,
+        380
+      ],
+      "status": "visible fragment; full geometry not established"
+    },
+    {
+      "id": "shoulder_right_visible",
+      "file": "layers/shoulder_right_visible.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2140,
+        382
+      ],
+      "status": "visible fragment; full geometry not established"
+    },
+    {
+      "id": "stick_left_cap",
+      "file": "layers/stick_left_cap.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1026,
+        1182
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "stick_right_cap",
+      "file": "layers/stick_right_cap.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1828,
+        1182
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "dpad_up",
+      "file": "layers/dpad_up.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        632,
+        696
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "dpad_right",
+      "file": "layers/dpad_right.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        750,
+        812
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "dpad_down",
+      "file": "layers/dpad_down.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        632,
+        936
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "dpad_left",
+      "file": "layers/dpad_left.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        514,
+        814
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "button_north",
+      "file": "layers/button_north.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2198,
+        642
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "button_east",
+      "file": "layers/button_east.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2374,
+        818
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "button_south",
+      "file": "layers/button_south.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2202,
+        998
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "button_west",
+      "file": "layers/button_west.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        2022,
+        818
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "button_share",
+      "file": "layers/button_share.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        910,
+        570
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "button_options",
+      "file": "layers/button_options.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1928,
+        574
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "button_home",
+      "file": "layers/button_home.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1428,
+        1194
+      ],
+      "status": "new matching rendered control"
+    },
+    {
+      "id": "touchpad",
+      "file": "layers/touchpad.png",
+      "x": 0,
+      "y": 0,
+      "pivot": [
+        1416,
+        682
+      ],
+      "status": "new matching rendered control"
+    }
+  ],
+  "sourceResolution": {
+    "width": 1430,
+    "height": 1100
+  },
+  "exportScale": 2,
+  "inputVerified": false
+}

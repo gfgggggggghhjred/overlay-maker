@@ -1,6 +1,6 @@
 // Visual layout selection is isolated from the saved job and the physical input device.
 let selectedVisualModel=DEFAULT_VISUAL_MODEL;
-function starterTemplates(model){return controllerDefinition(model).variants.map(v=>({id:v.id,name:v.name,description:controllerDefinition(model).name+' · '+v.name+' artwork. Any compatible input device can drive this layout.',nativeSkin:v.id,visualModel:model,thumbnail:v.thumbnail||GAME_SIR_SKINS[v.id]?.thumbnail,baseColor:v.palette?.baseColor||'#ffffff',buttonBaseColor:v.palette?.buttonBaseColor||'#ffffff',accent:v.palette?.accent||'#df1d34',pressed:v.palette?.pressed,buttonColors:v.palette?.buttonColors||{}}));}
+function starterTemplates(model){const definition=controllerDefinition(model);return definition.variants.map(v=>({id:v.id,name:v.name,description:definition.name+' · '+v.name+' artwork. '+(definition.supportNote||'Any compatible input device can drive this layout.'),nativeSkin:v.id,visualModel:model,thumbnail:v.thumbnail||GAME_SIR_SKINS[v.id]?.thumbnail,baseColor:v.palette?.baseColor||'#ffffff',buttonBaseColor:v.palette?.buttonBaseColor||'#ffffff',accent:v.palette?.accent||'#df1d34',pressed:v.palette?.pressed,buttonColors:v.palette?.buttonColors||{}}));}
 let STARTER_TEMPLATES=starterTemplates(DEFAULT_VISUAL_MODEL);
 let startScreenOpen=true,startScreenInitialized=false,selectedStarter='Gold',starterPreview=null,startThumbnailsReady=false;
 function defaultOverlayProject(model=DEFAULT_VISUAL_MODEL){return {...defaults,visualModel:model,nativeSkin:model===DEFAULT_VISUAL_MODEL?'':controllerDefinition(model).defaultVariant,buttonColors:{},text:'',breathing:false,glow:0};}
@@ -9,7 +9,7 @@ function starterProject(id,model=visualModelOf(project)){
  return {...defaults,visualModel:model,baseColor:preset.baseColor,buttonBaseColor:preset.buttonBaseColor,accent:preset.accent,pressed:preset.pressed||(model===DEFAULT_VISUAL_MODEL?(GAME_SIR_SKINS[id].testing.HighlightColor||'#e84950'):'#e84950'),nativeSkin:id,buttonColors:JSON.parse(JSON.stringify(preset.buttonColors)),text:'',breathing:false,glow:0};
 }
 function previewProject(){return startScreenOpen&&starterPreview?starterPreview:project;}
-function chosenStarter(){return selectedStarter==='default'?{id:'default',name:'Default overlay',description:'The default '+controllerDefinition(selectedVisualModel).name+' appearance, ready to customize.'}:STARTER_TEMPLATES.find(v=>v.id===selectedStarter);}
+function chosenStarter(){const definition=controllerDefinition(selectedVisualModel);return selectedStarter==='default'?{id:'default',name:'Default overlay',description:'The default '+definition.name+' appearance, ready to customize.'+(definition.supportNote?' '+definition.supportNote:'')}:STARTER_TEMPLATES.find(v=>v.id===selectedStarter);}
 function chooseStarter(id){
  if(id!=='default'&&!STARTER_TEMPLATES.some(v=>v.id===id))return;
  selectedStarter=id;
