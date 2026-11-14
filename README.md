@@ -1,10 +1,10 @@
 # Overlay Studio
 
-Internal Windows production tool for creating, testing and delivering controller customer overlays. Version 0.18.0 is a **Windows prerelease** for producer acceptance testing. Physical-controller and target-app validation limits are documented below.
+Internal Windows production tool for creating, testing and delivering controller customer overlays. Version 0.19.0 is a **Windows prerelease** for producer acceptance testing. Physical-controller and target-app validation limits are documented below.
 
 ## Run the Windows app
 
-Download [Overlay-Studio-Windows-x64.zip](https://github.com/BrandonFromFresno/overlay-maker/releases/download/v0.18.0/Overlay-Studio-Windows-x64.zip) from the [0.18.0 prerelease](https://github.com/BrandonFromFresno/overlay-maker/releases/tag/v0.18.0). Extract the entire ZIP, then open **Overlay Studio.exe**. Keep the adjacent files together. The ZIP includes [START-HERE.txt](START-HERE.txt).
+Download [Overlay-Studio-Windows-x64.zip](https://github.com/BrandonFromFresno/overlay-maker/releases/download/v0.19.0/Overlay-Studio-Windows-x64.zip) from the [0.19.0 prerelease](https://github.com/BrandonFromFresno/overlay-maker/releases/tag/v0.19.0). Extract the entire ZIP, then open **Overlay Studio.exe**. Keep the adjacent files together. The ZIP includes [START-HERE.txt](START-HERE.txt).
 
 The extracted app needs no account, Node.js, internet connection or GameSir server. Connect a browser-standard gamepad, focus the app and press a button. Live preview starts automatically. Connection feedback, the input-device picker and setup help are below the preview.
 
@@ -97,3 +97,7 @@ The [Controller Layer Pack](CONTROLLER-LAYER-PACK.md) adds ten additional PlaySt
 ## Shaded DualSense template (0.18)
 
 Choose **DualSense · Shaded** in Templates for the rendered controller with Original Dark/Rose, Pearl/Charcoal and Crimson/Graphite finishes. It uses the existing customization and standalone customer-delivery workflow. Touchpad click responds when browser button 17 is available; mute is preview-only. Source attribution, native-resolution limits and verification are recorded in [the DualSense audit](docs/dualsense-reference-audit.md).
+
+## Rendered Xbox template (0.19 candidate)
+
+**Xbox · Rendered / White & graphite** uses the supplied 2048px front-reference art with original colored face legends, corrected fixed wells, complete moving caps and attached shoulder illumination. The source-generation and QC findings are recorded in [the Xbox audit](docs/xbox-white-render-audit.md). Commercial reuse confirmation is pending before publication.

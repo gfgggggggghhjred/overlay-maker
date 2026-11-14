@@ -90,7 +90,7 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
  const comicPainter=createComicGunfirePainter(ctx,()=>{
   const reserved=[],triggerRects={};
   for(const key of ['LT','RT']){
-   const bounds=faces[key]?.floatBounds;
+   const bounds=faces[key]?.floatBounds||faces[key]?.bounds;
    if(bounds){const[x,y,w,h]=bounds,gr=Math.min(105,h*.55),gx=key==='RT'?x+w+75:x-75;triggerRects[key]=[x,y+300,w,h];reserved.push(triggerRects[key],[gx-gr,y+300+h/2-gr,gr*2,gr*2]);}
    else{triggerRects[key]=[key==='RT'?1090:365,38,185,200];reserved.push(triggerRects[key],[key==='RT'?1320:132,28,220,220]);}
   }
@@ -266,7 +266,7 @@ async function createOverlayRenderer(canvas, assets, fontAssets = {}) {
     if(nextKey!==artEmissionKey){artEmissionKey=nextKey;lc.clearRect(0,0,1672,941);lc.drawImage(artwork,0,0);if(p.mode==='text'){lc.globalCompositeOperation='source-in';lc.fillStyle=accent;lc.fillRect(0,0,1672,941);lc.globalCompositeOperation='source-over';}ae.clearRect(0,0,1672,941);ae.save();ae.shadowColor=accent;ae.shadowBlur=glow;ae.drawImage(layer,0,0);ae.restore();}
     ctx.save();ctx.globalAlpha=strength;ctx.drawImage(artEmission,0,0);ctx.restore();
    }
-   for(const key of faceKeys)if(state[key])face(key,modelGeometry&&['LT','RT'].includes(key)?mix(colors[key]?.rest||faces[key].normal,color(key,'pressed'),state[key]):color(key,'pressed'),true);
+   for(const key of faceKeys)if(state[key]){const trigger=['LT','RT'].includes(key);if(modelGeometry?.analogOverlay&&trigger){ctx.save();ctx.globalAlpha=state[key];face(key,color(key,'pressed'),true);ctx.restore();}else face(key,modelGeometry&&trigger?mix(colors[key]?.rest||faces[key].normal,color(key,'pressed'),state[key]):color(key,'pressed'),true);}
    themePainter.controls(p,state,time);
    stickLayout.forEach(([x,y,key,button,i,radius,,sourceTravel],index)=>{
     const axes=state.axes;

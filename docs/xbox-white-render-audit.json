@@ -1,0 +1,184 @@
+{
+  "inputSize": [
+    2048,
+    1664
+  ],
+  "layeredPreviewPixelExact": true,
+  "controls": [
+    {
+      "key": "A",
+      "bounds": [
+        1454,
+        749,
+        1585,
+        879
+      ],
+      "sourceButton": 0,
+      "visiblePixels": 12983
+    },
+    {
+      "key": "B",
+      "bounds": [
+        1588,
+        618,
+        1719,
+        749
+      ],
+      "sourceButton": 1,
+      "visiblePixels": 12965
+    },
+    {
+      "key": "X",
+      "bounds": [
+        1323,
+        620,
+        1453,
+        751
+      ],
+      "sourceButton": 2,
+      "visiblePixels": 12876
+    },
+    {
+      "key": "Y",
+      "bounds": [
+        1457,
+        488,
+        1587,
+        619
+      ],
+      "sourceButton": 3,
+      "visiblePixels": 12894
+    },
+    {
+      "key": "Share",
+      "bounds": [
+        841,
+        642,
+        926,
+        727
+      ],
+      "sourceButton": 8,
+      "visiblePixels": 5397
+    },
+    {
+      "key": "Options",
+      "bounds": [
+        1122,
+        642,
+        1206,
+        727
+      ],
+      "sourceButton": 9,
+      "visiblePixels": 5295
+    },
+    {
+      "key": "Home",
+      "bounds": [
+        943,
+        405,
+        1105,
+        566
+      ],
+      "sourceButton": 16,
+      "visiblePixels": 19839
+    },
+    {
+      "key": "LB",
+      "bounds": [
+        310,
+        290,
+        769,
+        464
+      ],
+      "sourceButton": 4,
+      "visiblePixels": 24685
+    },
+    {
+      "key": "RB",
+      "bounds": [
+        1280,
+        290,
+        1719,
+        452
+      ],
+      "sourceButton": 5,
+      "visiblePixels": 24584
+    },
+    {
+      "key": "LT",
+      "bounds": [
+        390,
+        269,
+        561,
+        354
+      ],
+      "sourceButton": 6,
+      "visiblePixels": 4854
+    },
+    {
+      "key": "RT",
+      "bounds": [
+        1488,
+        269,
+        1675,
+        375
+      ],
+      "sourceButton": 7,
+      "visiblePixels": 6053
+    }
+  ],
+  "wells": [
+    {
+      "side": "left",
+      "pivot": [
+        531,
+        685
+      ],
+      "capRadius": 125.21728774810781,
+      "visibleRimRadius": 126.35748880701145,
+      "openingBounds": [
+        415,
+        565,
+        651,
+        807
+      ],
+      "removedCapPixels": 37901
+    },
+    {
+      "side": "right",
+      "pivot": [
+        1277,
+        979
+      ],
+      "capRadius": 124.24769936485512,
+      "visibleRimRadius": 124.50101214160149,
+      "openingBounds": [
+        1160,
+        863,
+        1399,
+        1103
+      ],
+      "removedCapPixels": 37924
+    }
+  ],
+  "hashes": {
+    "layers/left-trigger.png": "3f071f109ff3be2a3aaec918fd2eaf88b5e0a483d29d86a99f3166041a3a502e",
+    "layers/right-trigger.png": "d80828303a11689be6fc76fc1eb31e1acd387e141ce42c7ece5ef4dceb367c53",
+    "layers/left-bumper.png": "ce6f40e33fa2844f06b1b3635610e15c0aeb64e13011ffc87e9dfe8d188c2c1a",
+    "layers/right-bumper.png": "37384bcadac33d9164a3d1c6d36c995d6aafff1b149053a3ddfaa07b7ddcdb2e",
+    "layers/body.png": "35f23188b84d134b46a675116eb4851074e912c0e0a0479d0e6b80f64d898aef",
+    "layers/left-stick-socket.png": "17cadd5a7cbbbfb3dfe5b2ba404745de5ecfe493d2d993290940b9d4115d611a",
+    "layers/right-stick-socket.png": "1109b0b01e889fde4a09ca20a617d41018ee34626536bfcec52b51f22df3df96",
+    "layers/d-pad.png": "9226a3cf77ed200f02396dd9af1df3fa0522868a4f97e64d02fb080f4fc64660",
+    "layers/a.png": "6b8f973f631037a96b488efc3af4f59ccafdfa093289647014a599e21f4d5d03",
+    "layers/b.png": "4c6311d860e22b41653e1e328ca71003396f4b59093dfc8936ace3569b98713f",
+    "layers/x.png": "e707ede69c4be057789f3372cf73dce4c5caa1d866768e7d1c70a4c3267cc6f9",
+    "layers/y.png": "d7310b085ed3c1e7f6012ed71345eea9d217c8352ade376e3a758a4a5eb5dd7b",
+    "layers/view.png": "8270481b39715b2097c9eba62c1d9ab0a58aa8dd48893926cbfacf6c496bec9e",
+    "layers/menu.png": "1694ab293c97cf04ba9c02bb54ba4e0c56a9d988d6d8bb3158bd0d947a9959db",
+    "layers/xbox.png": "1b6aea2c2fa540a2c119a2fcd5da74c5eda420a81b8dfd0bb6aa54ecc802bc53",
+    "layers/left-stick-cap.png": "d9f621aed1280677f4ad74302fca64277d4641e8a26531cf4162f293ccb0c21f",
+    "layers/right-stick-cap.png": "512b8d8b3271bac487ca77eab9704ed1c398ab0d2989d217c64630a3fc56d35b"
+  },
+  "shoulders": "Visible cutouts; masked illumination only. No hidden geometry or mechanical trigger animation invented."
+}

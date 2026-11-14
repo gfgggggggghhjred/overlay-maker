@@ -1,0 +1,216 @@
+{
+  "canvas": {
+    "width": 2048,
+    "height": 1664
+  },
+  "origin": "top-left",
+  "compositeOrder": "back-to-front",
+  "inputMapping": "standard",
+  "layers": [
+    {
+      "name": "left-trigger",
+      "file": "layers/left-trigger.png",
+      "bounds": [
+        390,
+        269,
+        561,
+        354
+      ],
+      "button": 6
+    },
+    {
+      "name": "right-trigger",
+      "file": "layers/right-trigger.png",
+      "bounds": [
+        1488,
+        269,
+        1675,
+        375
+      ],
+      "button": 7
+    },
+    {
+      "name": "left-bumper",
+      "file": "layers/left-bumper.png",
+      "bounds": [
+        310,
+        290,
+        769,
+        464
+      ],
+      "button": 4
+    },
+    {
+      "name": "right-bumper",
+      "file": "layers/right-bumper.png",
+      "bounds": [
+        1280,
+        290,
+        1719,
+        452
+      ],
+      "button": 5
+    },
+    {
+      "name": "body",
+      "file": "layers/body.png",
+      "bounds": [
+        42,
+        289,
+        2007,
+        1592
+      ]
+    },
+    {
+      "name": "left-stick-socket",
+      "file": "layers/left-stick-socket.png",
+      "bounds": [
+        386,
+        538,
+        687,
+        841
+      ]
+    },
+    {
+      "name": "right-stick-socket",
+      "file": "layers/right-stick-socket.png",
+      "bounds": [
+        1124,
+        832,
+        1425,
+        1135
+      ]
+    },
+    {
+      "name": "d-pad",
+      "file": "layers/d-pad.png",
+      "bounds": [
+        626,
+        847,
+        918,
+        1143
+      ],
+      "buttons": {
+        "up": 12,
+        "down": 13,
+        "left": 14,
+        "right": 15
+      }
+    },
+    {
+      "name": "a",
+      "file": "layers/a.png",
+      "bounds": [
+        1454,
+        749,
+        1585,
+        879
+      ],
+      "button": 0
+    },
+    {
+      "name": "b",
+      "file": "layers/b.png",
+      "bounds": [
+        1588,
+        618,
+        1719,
+        749
+      ],
+      "button": 1
+    },
+    {
+      "name": "x",
+      "file": "layers/x.png",
+      "bounds": [
+        1323,
+        620,
+        1453,
+        751
+      ],
+      "button": 2
+    },
+    {
+      "name": "y",
+      "file": "layers/y.png",
+      "bounds": [
+        1457,
+        488,
+        1587,
+        619
+      ],
+      "button": 3
+    },
+    {
+      "name": "view",
+      "file": "layers/view.png",
+      "bounds": [
+        841,
+        642,
+        926,
+        727
+      ],
+      "button": 8
+    },
+    {
+      "name": "menu",
+      "file": "layers/menu.png",
+      "bounds": [
+        1122,
+        642,
+        1206,
+        727
+      ],
+      "button": 9
+    },
+    {
+      "name": "xbox",
+      "file": "layers/xbox.png",
+      "bounds": [
+        943,
+        405,
+        1105,
+        566
+      ],
+      "button": 16
+    },
+    {
+      "name": "left-stick-cap",
+      "file": "layers/left-stick-cap.png",
+      "bounds": [
+        429,
+        590,
+        646,
+        807
+      ],
+      "button": 10,
+      "axes": [
+        0,
+        1
+      ],
+      "pivot": [
+        531,
+        685
+      ]
+    },
+    {
+      "name": "right-stick-cap",
+      "file": "layers/right-stick-cap.png",
+      "bounds": [
+        1167,
+        884,
+        1384,
+        1101
+      ],
+      "button": 11,
+      "axes": [
+        2,
+        3
+      ],
+      "pivot": [
+        1277,
+        979
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Xbox Controller Input Reference</title>
+<style>
+body{margin:2rem auto;max-width:56rem;padding:0 1rem;font:16px system-ui;background:#181a20;color:#f6f7fa}
+canvas{width:min(100%,44rem);height:auto;border:1px solid #494d58;border-radius:8px}
+pre{white-space:pre-wrap}
+</style>
+<h1>Xbox controller input reference</h1>
+<p>Unzip the whole pack, open this page on localhost, and press a button on your controller. Test both sticks through a full circle, then press the bumpers and slowly squeeze each trigger.</p>
+<canvas id="preview" width="2048" height="1664"></canvas>
+<pre id="status" role="status">Loading layers…</pre>
+<script type="module">
+const status = document.querySelector('#status');
+const ctx = document.querySelector('canvas').getContext('2d');
+try {
+  const response = await fetch('layers.json');
+  if (!response.ok) throw new Error('The layer manifest could not be loaded.');
+  const { layers, canvas } = await response.json();
+  await Promise.all(layers.map(async layer => {
+    layer.image = new Image();
+    layer.image.src = layer.file;
+    await layer.image.decode();
+  }));
+  function frame() {
+    const pad = Array.from(navigator.getGamepads?.() ?? [])
+      .find(device => device?.mapping === 'standard');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const active = [];
+    for (const layer of layers) {
+      const buttons = layer.buttons ? Object.values(layer.buttons) : [layer.button];
+      const pressure = Math.max(...buttons.map(index => pad?.buttons[index]?.value ?? 0));
+      const [x, y] = layer.axes?.map(index => (pad?.axes[index] ?? 0) * 15) ?? [0, 0];
+      ctx.drawImage(layer.image, x, y);
+      if (pressure > .01) {
+        ctx.filter = 'brightness(1.4) sepia(1) saturate(3) hue-rotate(165deg)';
+        ctx.globalAlpha = pressure * .75;
+        ctx.drawImage(layer.image, x, y);
+        ctx.filter = 'none';
+        ctx.globalAlpha = 1;
+        active.push(layer.name + ' ' + pressure.toFixed(2));
+      }
+    }
+    status.textContent = pad
+      ? pad.id + '\nAxes ' + pad.axes.map(axis => axis.toFixed(2)).join('  ')
+        + '\nPressed ' + (active.join(', ') || '—')
+      : 'Press a button on a controller that reports the standard Gamepad mapping.';
+    requestAnimationFrame(frame);
+  }
+  frame();
+} catch (error) {
+  status.textContent = 'Start a local server in the extracted folder with python -m http.server 8000 and open http://localhost:8000/input-reference.html.';
+}
+</script>
